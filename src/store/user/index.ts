@@ -4,7 +4,7 @@ import { userStateAction } from '../../types'
 
 const initialState = {
     email :"",
-    token : "",
+    token : localStorage.getItem("token"),
     errMsg : "",
     loading  : false
 }

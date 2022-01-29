@@ -1,0 +1,63 @@
+@mixin  alignCenter {
+    display: flex;
+    align-items: center ;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 60px;
+    align-items: center;
+
+    .logo__routename{
+        @include alignCenter();
+        img{
+            height: 30px;
+            height: 30px;
+        }
+        span{
+            margin-right: 20px;
+            margin-left: 20px;
+            color: #E6E7E9;
+        }
+    }
+
+    .ul__wrap{
+        @include alignCenter();
+        
+        .ul1{
+            display: flex;
+            list-style: none;
+            li{
+                margin-right: 20px;
+                font-weight: 400;
+                font-size: 14px;
+            }
+        }
+        .ul2{
+            @include alignCenter();
+            justify-content: flex-end;
+            list-style: none;
+            li{
+                // margin-right: 20px;
+                cursor: pointer;
+                img{
+                    height: 15px;
+                }
+                .userImage{
+                    height: 30px;
+                }
+            }
+            .center{
+                margin-right: 20px;
+                margin-left: 20px;
+                color: #EF5350;
+
+            }
+        }
+    }
+
+    
+}

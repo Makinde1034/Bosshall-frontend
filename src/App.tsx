@@ -1,26 +1,35 @@
 import React,{useState,Suspense} from 'react';
-import {useRoutes} from 'react-router-dom'
-import SignUp from './views/register/register';
+import {useRoutes, Navigate} from 'react-router-dom'
+import Register from './views/register/register';
 
 
 
 const ProfileSetup  = React.lazy(()=>import("./views/profileSetup/profileSetup"))
+const Dashboard  = React.lazy(()=>import("./views/dashboard/dashboard"))
 
 function App() {
 
-  const routes = () => [  
+  
+  const isLoggedIn = true
+
+  const routes = (test : boolean) => [  
     {
       path : "*",
-      element : <SignUp />
+      element : <Register />
     },
     {
-      path : "/profile",
-      element : <ProfileSetup />
-    }
+      path : "dashboard",
+      element : test ? <Dashboard /> : <Navigate to="/" /> ,
+      children: [
+        { path: '', element: <ProfileSetup /> },
+    
+      ]
+    },
+    
   ]
 
   function Route(){
-    const routing = useRoutes(routes())
+    const routing = useRoutes(routes(isLoggedIn))
 
     return routing
   }

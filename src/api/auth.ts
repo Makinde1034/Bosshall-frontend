@@ -9,5 +9,17 @@ export default {
             method : "POST",
             data : data
         })
+    },
+
+    updateProfile(data : any){
+        return axios({
+            url : `${BASE_URL}/api/update-profile`,
+            method : "POST",
+            data : data,
+            headers:{
+                "x-access-token" : localStorage.getItem("token"),
+                'content-type' : 'application/json',
+            }
+        })
     }
 }

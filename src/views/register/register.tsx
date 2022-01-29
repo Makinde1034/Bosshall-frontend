@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './register.module.scss'
 import LandingLeft from '../../components/landingLeft/landingLeft';
-import SignUp from '../../components/signUp/signUp'
-import SignIn from '../../components/signIn/signIn';
+import SignUp from '../signUp/signUp'
+import SignIn from '../signIn/signIn';
 import { Routes,Route,Link } from 'react-router-dom'
 
 function Register() {
@@ -24,6 +24,7 @@ function Register() {
           <Routes>
             <Route path="/" element={<SignUp />} />
             <Route path="signin" element={<SignIn />} />
+            <Route path="*" element={<SignIn />} />
           </Routes>
         </div>
       </div>

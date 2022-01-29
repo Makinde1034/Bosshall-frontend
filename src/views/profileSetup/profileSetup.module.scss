@@ -1,0 +1,149 @@
+@mixin  center($param1,$param2,$dir) {
+    display: flex;
+    justify-content:$param1 ;
+    align-items: $param2;
+    flex-direction: $dir;
+}
+
+.nav{
+    height: 60px;
+    border-top: 1px solid #e6e7e9;
+    border-bottom: 1px solid #e6e7e9;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 200px;
+    padding-right: 200px;
+
+}
+
+.body{
+    padding-left: 200px;
+    padding-right: 200px;
+    .banner{
+        width: 100%;
+        height: 240px;
+        margin-top: 20px;
+        // background-image: url(../../assets/img/Rectangle.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 5px;
+        background-size: 100% 100%;
+        padding: 20px;
+        position: relative;
+        z-index: 10;
+        .banner__nav{
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            z-index: 6;
+            label{
+                position: relative;
+
+                span{
+                    padding: 7px 20px;
+                    background: #EF5350;
+                    border: none;
+                    color: white;
+                    font-weight: 600;
+                    border-radius: 3px;
+                    cursor:  pointer;
+                    z-index: 400;
+                }
+
+                input[type="file"]{
+                    display: none;
+                }
+            }
+           
+        }
+        .user{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width:fit-content;
+            position: relative;
+            img{
+                height: 100px;
+                width: 100px;
+                border-radius: 100%;
+            }
+            span{
+                width: 70px;
+                height: 30px;
+                background-color:  #F4F5F7;
+                @include center(center,center,row );
+                font-size: 14px;
+                color: #EF5350;
+                font-weight: 600;
+                border-radius: 5px;
+                margin-top: 10px;
+                
+            }
+
+            input[type="file"]{
+                display: none;
+            }
+        }
+
+        .banner__background{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            z-index: -6;
+            left: 0px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        
+    }
+
+    .profile__info{
+        width: 100%;
+        
+        border:  1px solid #e6e7e9;
+        margin-top: 20px;
+        border-radius: 5px;
+        padding: 20px;
+        nav{
+            p{
+                font-weight: 600;
+            }
+        }
+
+        .form{
+            @include center(center,center,column );
+            .input__wrap{
+                @include center(flex-end,center ,row );
+             
+                margin-bottom: 30px;
+                label{
+                    color: rgba(24,24,25,0.7);
+                    margin-right: 20px;
+                    margin-right: 10px;
+                    width: 100px;
+                    display: flex;
+                    justify-content: flex-end;
+                    font-weight: 400;
+                  
+                }
+                input,textarea{
+                    width: 300px;
+                    height: 40px;
+                    border: 1px solid #E6E7E9;
+                    border-radius: 3px;
+                    outline: none;
+                    padding-left: 10px;
+                  
+                }
+                textarea{
+                    height: 100px;
+                }
+            }
+        }
+    }
+
+}
+
