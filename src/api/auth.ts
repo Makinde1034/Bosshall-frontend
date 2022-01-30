@@ -21,5 +21,14 @@ export default {
                 'content-type' : 'application/json',
             }
         })
+    },
+    getUser(){
+        return axios({
+            url : `${BASE_URL}/api/get-user`,
+            method : "GET",
+            headers : {
+                "x-access-token" : localStorage.getItem("token")
+            }
+        })
     }
 }

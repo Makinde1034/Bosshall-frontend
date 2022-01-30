@@ -4,6 +4,6 @@ export interface userDetails {
 }
 
 export interface userStateAction {
-    email : string,
+    userDetails : object,
     token : string
 }

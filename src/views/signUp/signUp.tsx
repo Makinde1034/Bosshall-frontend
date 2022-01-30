@@ -7,7 +7,7 @@ import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { setUser,setError,authRequest,authFailure } from '../../store/user';
 import { useNavigate } from 'react-router-dom'
 import Preloader from '../../components/prealoder/preloader';
-import { getToken } from '../../helpers/token';
+import { saveToken,saveUserImage } from '../../helpers/storage';
 
 
 function SignUp() {
@@ -31,12 +31,13 @@ function SignUp() {
 			dispatch(authRequest(true))
 				api.register(userDetails).then((res)=>{
 				console.log(res)
-				getToken(res.data.accessToken)
+				saveToken(res.data.accessToken)
 				const details = {
 					token : res.data.accessToken,
-					email : res.data.newUser.email
+					userDetails : res.data.newUser
 				}
 				dispatch(setUser(details) )
+				saveUserImage(res.data.newUser)
 				navigate("dashboard");
 			}).catch((err)=>{
 				dispatch(setError(err.response.data.message));

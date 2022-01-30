@@ -4,10 +4,13 @@ import CompleteButton from '../../components/buttons/completeButton/completeButt
 import banner from '../../assets/img/Rectangle.png'
 import user from '../../assets/img/Avatar.png'
 import api from '../../api/auth'
+import { saveUserImage } from '../../helpers/storage'
+import { setUser } from '../../store/user/index'
+import { useAppDispatch,useAppSelector } from '../../store/hooks'
 
 function ProfileSetup() {
 
-  const [bannerImage,setBannerImage] = useState<any | null>();
+  const [bannerImage,setBannerImage] = useState<any | null>();         
 	const [userImage, setUserImage] = useState<any | null>()
 	const [headline,setHeadline] = useState("")
 	const [bio,setBio] = useState("")
@@ -15,7 +18,8 @@ function ProfileSetup() {
 	const [country,setCountry] = useState("")
 	const [address,setAddress] = useState("")
 	const [email,setEmail] = useState("")
-
+  const dispatch = useAppDispatch()
+  // const userDetails = useAppSelector((state)=>state.userSlice.userDetails)
 	
 
 
@@ -56,7 +60,11 @@ function ProfileSetup() {
 
 			})
 			api.updateProfile(data).then((res)=>{
-				console.log(res)
+				console.log(res);
+        const data = {
+          userImg : res.data.userImage
+        }
+        dispatch(setUser(data))
 			}).catch(err=>{
 				console.log(err)
 			})

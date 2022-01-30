@@ -1,0 +1,19 @@
+@mixin  center($param1,$param2,$dir) {
+    display: flex;
+    justify-content:$param1 ;
+    align-items: $param2;
+    flex-direction: $dir;
+}
+
+.channel{
+    height: 90vh;
+    @include center(center,center ,column );
+    h3{
+        margin-bottom: 10px;
+    }
+    p{
+        text-align: center;
+        line-height: 25x;
+        margin-bottom: 20px;
+    }
+}
