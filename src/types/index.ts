@@ -4,6 +4,9 @@ export interface userDetails {
 }
 
 export interface userStateAction {
-    userDetails : object,
-    token : string
+    userImg :string,
+    token : string,
+    errMsg : string,
+    loading  : boolean,
+    updateProfileLoading : boolean
 }

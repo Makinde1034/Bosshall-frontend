@@ -4,7 +4,7 @@ import message from '../../assets/img/Vector.png'
 import Ripples from 'react-ripples'
 import api from '../../api/auth'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
-import { setUser,setError,authRequest,authFailure } from '../../store/user';
+import { setUser,setError,authRequest,authFailure, } from '../../store/user';
 import { useNavigate } from 'react-router-dom'
 import Preloader from '../../components/prealoder/preloader';
 import { saveToken,saveUserImage } from '../../helpers/storage';

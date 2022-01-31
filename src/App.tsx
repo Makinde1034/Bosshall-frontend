@@ -5,9 +5,11 @@ import { isAuthenticated } from './helpers/authentication';
 
 
 
+
 const ProfileSetup  = React.lazy(()=>import("./views/profileSetup/profileSetup"))
 const Dashboard  = React.lazy(()=>import("./views/dashboard/dashboard"))
 const Channel = React.lazy(()=>import("./views/channel/channel"))
+const CreateChannel = React.lazy(()=>import("./views/createChannel/createChannel"))
 
 function App() {
 
@@ -27,6 +29,11 @@ function App() {
         {
           path : "channel",
           element : isAuth ? <Channel /> : <Navigate to="/" /> ,
+          
+        },
+        {
+          path : "create-channel",
+          element : isAuth ? <CreateChannel /> : <Navigate to="/" /> ,
           
         },
       ]

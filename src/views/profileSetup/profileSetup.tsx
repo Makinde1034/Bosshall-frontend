@@ -5,8 +5,9 @@ import banner from '../../assets/img/Rectangle.png'
 import user from '../../assets/img/Avatar.png'
 import api from '../../api/auth'
 import { saveUserImage } from '../../helpers/storage'
-import { setUser } from '../../store/user/index'
+import { setUser,updateProfileRequest,updateProfileSuccess,updateProfileFailure } from '../../store/user/index'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
+import Preloader from '../../components/prealoder/preloader';
 
 function ProfileSetup() {
 
@@ -20,7 +21,7 @@ function ProfileSetup() {
 	const [email,setEmail] = useState("")
   const dispatch = useAppDispatch()
   // const userDetails = useAppSelector((state)=>state.userSlice.userDetails)
-	
+	const loading = useAppSelector((state)=>state.userSlice.updateProfileLoading)
 
 
 
@@ -48,18 +49,11 @@ function ProfileSetup() {
 	const updateProfile = (e:any) =>{
 		e.preventDefault()
 		return new Promise((resolve)=>{
-			const data = JSON.stringify({
-				userImage : userImage,
-				userBanner : bannerImage,
-				headline,
-				bio,
-				fullname,
-				email,
-				country,
-				address
-
-			})
+      dispatch( updateProfileRequest(true) )
+			const data = JSON.stringify({userImage : userImage,userBanner : bannerImage, headline, bio, fullname, email, country,address})
+ 
 			api.updateProfile(data).then((res)=>{
+        dispatch( updateProfileSuccess(false) )
 				console.log(res);
         const data = {
           userImg : res.data.userImage
@@ -67,6 +61,7 @@ function ProfileSetup() {
         dispatch(setUser(data))
 			}).catch(err=>{
 				console.log(err)
+        dispatch( updateProfileSuccess(false) )
 			})
 		})
 	}
@@ -78,7 +73,9 @@ function ProfileSetup() {
     <div style={{paddingBottom:"100px"}}>
       <form onSubmit={(e)=>{updateProfile(e)}} action="">
         <nav className={style.nav}>
-          <CompleteButton text = "Finish" />
+          <button>
+            { loading ? <Preloader /> : <p>Finish</p>}
+          </button>
         </nav>
 
         <div className={style.body}>

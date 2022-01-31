@@ -19,7 +19,7 @@ function Navigation() {
   return (
     <div>
 		<nav className={style.nav}>
-			<div className={style.logo__routename}>  v
+			<div className={style.logo__routename}>  
 				<img src={logo} alt="logo" />
 				<span>|</span>
 				<p>{location.pathname.split("/").splice(2,1)}</p>
@@ -39,7 +39,7 @@ function Navigation() {
 						<img src={alarm} alt="" />
 					</li>
 					<li>
-						<img className={style.userImage} src={userImage} alt="" />
+						<img className={style.userImage} src={userImage} alt="image" />
 					</li>
 				</ul>
 			</div>

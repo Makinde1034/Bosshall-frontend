@@ -1,10 +1,12 @@
 import { configureStore }from '@reduxjs/toolkit'
 import userSlice from './user/index'
+import ChannelSlice from './channel/index'
 
 
 const store = configureStore({
     reducer : {
-        userSlice
+        userSlice,
+        ChannelSlice
     }
 })
 

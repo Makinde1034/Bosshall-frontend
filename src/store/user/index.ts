@@ -7,7 +7,8 @@ const initialState = {
     userImg :localStorage.getItem("img") || "",
     token : localStorage.getItem("token"),
     errMsg : "",
-    loading  : false
+    loading  : false,
+    updateProfileLoading : false
 }
 
 const userSlice = createSlice({
@@ -28,11 +29,22 @@ const userSlice = createSlice({
         },
         authFailure(state,action:PayloadAction<boolean>){
             state.loading = action.payload
+        },
+
+        // update user profile
+        updateProfileRequest(state,action:PayloadAction<boolean>){
+            state.updateProfileLoading = action.payload
+        },
+        updateProfileSuccess(state,action:PayloadAction<boolean>){
+            state.updateProfileLoading = action.payload
+        },
+        updateProfileFailure(state,action:PayloadAction<boolean>){
+            state.updateProfileLoading = action.payload
         }
         
     }
 })
 
-export const { setUser,setError,authRequest,authFailure } = userSlice.actions
+export const { setUser,setError,authRequest,authFailure,updateProfileRequest,updateProfileFailure,updateProfileSuccess } = userSlice.actions
 
 export default userSlice.reducer
