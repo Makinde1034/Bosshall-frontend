@@ -10,11 +10,12 @@ const ProfileSetup  = React.lazy(()=>import("./views/profileSetup/profileSetup")
 const Dashboard  = React.lazy(()=>import("./views/dashboard/dashboard"))
 const Channel = React.lazy(()=>import("./views/channel/channel"))
 const CreateChannel = React.lazy(()=>import("./views/createChannel/createChannel"))
+const SingleChannel = React.lazy(()=>import("./views/singleChannel/singleChannel"))
 
 function App() {
 
   
-  const isLoggedIn = true
+  
 
   const routes = (isAuth:boolean) => [  
     {
@@ -36,6 +37,10 @@ function App() {
           element : isAuth ? <CreateChannel /> : <Navigate to="/" /> ,
           
         },
+        {
+          path : "single-channel/:id",
+          element : isAuth ? <SingleChannel /> : <Navigate to="/" />
+        }
       ]
     },
    

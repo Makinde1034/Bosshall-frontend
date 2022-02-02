@@ -6,6 +6,7 @@ import api from '../../api/channel'
 import { createChannelFailure, createChannelRequest, createChannelSuccess } from '../../store/channel/index'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Preloader from '../../components/prealoder/preloader';
+import { useNavigate } from 'react-router-dom'
 
 function CreateChannel() {
 
@@ -15,7 +16,9 @@ function CreateChannel() {
 	const [about, setAbout] = useState("");
 	const [websiteLink, setWebsiteLink] = useState("");
 	const dispatch = useAppDispatch()
-	const loading = useAppSelector((state)=>state.ChannelSlice.createChannelLoading)
+	const loading = useAppSelector((state)=>state.ChannelSlice.createChannelLoading);
+	const navigate = useNavigate()
+	
 
 	const getImage = (e:any) =>{
 		
@@ -35,12 +38,18 @@ function CreateChannel() {
 			const data = {image,name,address,about,websiteLink}
 			api.createChannel(data).then((res)=>{
 				dispatch( createChannelSuccess(false) )
+				const id = res.data._id
+				navigate(`/dashboard/single-channel/${id}`)
 				console.log(res)
 			}).catch(err=>{
 				console.log(err)
 				dispatch( createChannelFailure(false) )
 			})
 		})
+	}
+
+	const goto = () =>{
+		navigate('/dashboard/single-channel/12345')
 	}
 
   return (
@@ -91,6 +100,7 @@ function CreateChannel() {
 					</section>
 				</div>
 			</form>
+			<button onClick={goto}></button>
     </div>
   )
 }

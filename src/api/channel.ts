@@ -12,5 +12,12 @@ export default {
             },
             data : data
         })
+    },
+    getChannel(id : any){
+        return axios({
+            url : `${BASE_URL}/api/get-channel/${id}`,
+            method : "GET",
+
+        })
     }
 }

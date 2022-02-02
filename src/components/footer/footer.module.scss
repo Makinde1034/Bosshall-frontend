@@ -2,6 +2,9 @@
     height: 50px;
     background: #216583;
     display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     align-items: center;
     justify-content: center;
     p{
@@ -9,4 +12,16 @@
         font-size: 12px;
     }
 
+}
+
+
+body {
+  position: relative;
+ 
+}
+
+body::after {
+  content: '';
+  display: block;
+  height: 60px; /* Set same as footer's height */
 }

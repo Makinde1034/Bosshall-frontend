@@ -8,7 +8,8 @@ const initialState = {
     token : localStorage.getItem("token"),
     errMsg : "",
     loading  : false,
-    updateProfileLoading : false
+    updateProfileLoading : false,
+    _id : ""
 }
 
 const userSlice = createSlice({
@@ -18,7 +19,11 @@ const userSlice = createSlice({
         setUser(state,action:PayloadAction<any>){
             state.userImg =  action.payload.userImg
             state.token = action.payload.token
+            state._id = action.payload._id
             saveUserImage(action.payload.userImg)
+        },
+        setUserId(state,action:PayloadAction<string>){ //temporary
+            state._id = action.payload
         },
         setError(state,action:PayloadAction<string>){
             state.errMsg = action.payload
@@ -45,6 +50,6 @@ const userSlice = createSlice({
     }
 })
 
-export const { setUser,setError,authRequest,authFailure,updateProfileRequest,updateProfileFailure,updateProfileSuccess } = userSlice.actions
+export const { setUser,setError,authRequest,authFailure,updateProfileRequest,updateProfileFailure,updateProfileSuccess, setUserId } = userSlice.actions
 
 export default userSlice.reducer

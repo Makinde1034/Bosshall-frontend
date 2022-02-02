@@ -1,0 +1,73 @@
+
+
+// body{
+//     position: relative;
+// }
+.channel{
+    min-height: 100vh;
+    padding-left: 200px;
+    padding-right: 200px;
+
+    .channel__banner{
+        height: 240px;
+        width: 100%;
+        background-image: url('../../assets/img/Rectangle.png');
+        margin-top: 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border-radius: 5px;
+        position: relative;
+
+        .channel__nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            bottom: 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+            .owner{
+                display: flex;
+                align-items: center;
+               
+                img{
+                    margin-right: 20px;
+                     height: 50px;
+                     width: 50px;
+                     border-radius: 100%;
+                }
+                h3{
+                    font-size: 16px;
+                }
+                p{
+                    font-size: 12px;
+                }
+            }
+            button{
+                 background: #EF5350;
+                border: none;
+                color: white;
+                font-weight: 600;
+                border-radius: 3px;
+                cursor:  pointer;
+                width: 100px;
+                height: 30px;
+            }
+        }
+    }
+
+    .videos{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 20px;
+        gap: 20px;
+
+        div{
+            background:tan;
+            height: 200px;
+            border-radius: 5px;
+        }
+    }
+}
