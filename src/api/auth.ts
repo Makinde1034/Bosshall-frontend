@@ -11,6 +11,14 @@ export default {
         })
     },
 
+    login(data : userDetails){
+        return axios({
+            url: `${BASE_URL}/api/login`,
+            method : "POST",
+            data : data
+        })
+    },
+
     updateProfile(data : any){
         return axios({
             url : `${BASE_URL}/api/update-profile`,

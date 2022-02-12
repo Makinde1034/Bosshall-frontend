@@ -1,0 +1,116 @@
+.upload{
+    // height: 200px;
+    width:  400px;
+    background: white;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+    padding: 20px;
+    nav{
+        margin-bottom: 20px;
+        border-bottom: 1px solid #E6E7E9;
+        padding-bottom: 10px;
+        p{
+            font-size: 14px;
+            font-weight: 600;
+           
+        }
+    }
+
+    .upload__video{
+        width: 100%;
+        height: 200px;
+        border: 2px dashed  #E6E7E9;
+        border-radius: 3px;
+        
+
+        .video{
+            width: 100%;
+            height: 100%;
+        }
+
+        label{
+            position: relative;
+            cursor: pointer;
+        }
+
+        input[type="file"]{
+            display: none;
+            width: 100%;
+            height: 100%;
+         
+        }
+
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: center;
+
+            .drag{
+                font-size: 12px;
+                font-weight: 600;
+                 margin: 10px 0px 10px 0px;
+
+            }
+            .drag__upload{
+                font-size: 10px;
+            }
+
+        }
+    }
+
+    .upload__title{
+        display: flex;
+        flex-direction: column;
+
+        label{
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        input{
+            outline: none;
+            border: 1px solid #E6E7E9;
+            height: 40px;
+            border-radius: 3px;
+            padding-left: 10px;
+        }
+    }
+
+    .buttons{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+
+        .cancel{
+            width: 70px;
+            height: 30px;
+            background: #5657580A;
+            border: none;
+            font-weight: 600;
+            border-radius: 3px;
+            margin-right: 5px;
+            cursor: pointer;
+
+        }
+        .upload__btn{
+            background: #EF5350;
+            width: 70px;
+            height: 30px;
+            border: none;
+            font-weight: 600;
+            color: white;
+            border-radius: 3px;
+            cursor: pointer ;
+
+        }
+    }
+}
+

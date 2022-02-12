@@ -1,13 +1,34 @@
 import { createSlice,PayloadAction } from '@reduxjs/toolkit'
 
-const initialState = {
+interface videos{
+    url : string,
+    title : string
+}
+interface channel{
+    name : string,
+    image : string,
+    owner : string,
+    _id : string,
+    videos :videos[]
+}
+interface channelProps{
+    createChannelLoading : boolean,
+    channel : channel
+}
+
+
+const initialState : channelProps = {
     createChannelLoading : false,
     channel : {
         name : "",
         image : "",
-        owner : ""
+        owner : "",
+        _id : "",
+        videos : []
     }
 }
+
+
 
 const channelSlice = createSlice({
     name : "channelSlice",

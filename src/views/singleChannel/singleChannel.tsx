@@ -7,8 +7,11 @@ import api from '../../api/channel'
 import userApi from '../../api/auth'
 import { setChannel } from '../../store/channel/index'
 import { setUserId } from '../../store/user/index'
+import { setUploadModal } from '../../store/toggle/index'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { useSelector } from 'react-redux';
+import UploadVideo from '../../components/uploadVideo/uploadVideo';
+import Video from '../../components/video/video';
 
 function SignChannel() {
 	const { id } = useParams();
@@ -16,6 +19,8 @@ function SignChannel() {
 
 	const channelDetails = useAppSelector((state)=>state.ChannelSlice.channel)
 	const userId = useAppSelector((state)=>state.userSlice._id)
+	const isModalOpen = useAppSelector((state)=>state.toggleSlice.uploadModal)
+
 
 	useEffect(()=>{
 		getChannel();
@@ -40,35 +45,38 @@ function SignChannel() {
 		})
 	}
 
+	const openModal = () =>{
+		dispatch( setUploadModal(true) )
+	}
+
 
   return (
     <div>
-			<div className={style.channel}>
-				<div className={style.channel__banner}>
-					<nav className={style.channel__nav}>
-						<div className={style.owner}>
-							<img src={channelDetails.image} alt="userimage" />
-							<div className={style.owner__text}>
-								<h3>{channelDetails.name}</h3>
-								<p>58950 subscribers</p>
-							</div>
+		<div className={style.channel}>
+			<div className={style.channel__banner}>
+				<nav className={style.channel__nav}>
+					<div className={style.owner}>
+						<img src={channelDetails.image} alt="userimage" />
+						<div className={style.owner__text}>
+							<h3>{channelDetails.name}</h3>
+							<p>58950 subscribers</p>
 						</div>
-						{ channelDetails.owner === userId ? <button>Upload video</button> : <button>Subscribe</button> }
-					</nav>
-				</div>
-
-				<section className={style.videos} >
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-				</section>
+					</div>
+					{ channelDetails.owner === userId ? <button onClick={openModal} >Upload video</button> : <button  >Subscribe</button> }
+				</nav>
 			</div>
+
+			<section className={style.videos} >
+				{
+					channelDetails.videos.map((item,index)=>(
+						<div className={style.video} key={index}>
+							<Video title = {item.title} url={item.url} image={channelDetails.image}    />
+						</div>
+					))
+				}
+			</section>
+		</div>
+		{ isModalOpen && <UploadVideo />}
     </div>
   )
 }

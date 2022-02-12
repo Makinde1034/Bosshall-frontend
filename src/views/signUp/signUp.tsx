@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import style from './signUp.module.scss'
-import message from '../../assets/img/Vector.png'
+import message from '../../assets/img/mail.png'
 import Ripples from 'react-ripples'
 import api from '../../api/auth'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
@@ -37,7 +37,6 @@ function SignUp() {
 					userDetails : res.data.newUser
 				}
 				dispatch(setUser(details) )
-				saveUserImage(res.data.newUser)
 				navigate("dashboard");
 			}).catch((err)=>{
 				dispatch(setError(err.response.data.message));
@@ -57,11 +56,11 @@ function SignUp() {
 			<p>Signup to see moments from your favorite football,movie review shows.</p>
 			<form onSubmit={(e)=>register(e)} className={style.form} action="">
 				<div className={style.inputWrap}>
-					<input onChange={(e)=>setEmail(e.target.value)} value={email} placeholder='makinde1034@gmail.com' type="text" />
+					<input onChange={(e)=>setEmail(e.target.value)} value={email} required placeholder='makinde1034@gmail.com' type="text" />
 					<img src={message} alt="" />
 				</div>
 				<div className={style.inputWrap}>
-					<input onChange={(e)=>setPassword(e.target.value)} value={password} placeholder='*******'  type="password" />
+					<input onChange={(e)=>setPassword(e.target.value)} value={password} required placeholder='*******'  type="password" />
 				</div>
 				<button disabled={loading}>
 					{ loading ? <Preloader /> : <p>Sign up</p> }

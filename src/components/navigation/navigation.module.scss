@@ -30,11 +30,12 @@
         .ul1{
             display: flex;
             list-style: none;
-            li{
+            li,a{
                 margin-right: 20px;
                 font-weight: 500;
                 font-size: 12px;
                 cursor: pointer;
+                text-decoration: none
             }
         }
         .ul2{

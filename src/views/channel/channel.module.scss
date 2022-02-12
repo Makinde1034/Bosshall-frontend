@@ -8,6 +8,7 @@
 .channel{
     height: 90vh;
     @include center(center,center ,column );
+    
     h3{
         margin-bottom: 10px;
     }

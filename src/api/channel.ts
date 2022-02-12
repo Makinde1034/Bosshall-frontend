@@ -15,7 +15,7 @@ export default {
     },
     getChannel(id : any){
         return axios({
-            url : `${BASE_URL}/api/get-channel/${id}`,
+            url : `${BASE_URL}/api/get-channel-videos/${id}`,
             method : "GET",
 
         })

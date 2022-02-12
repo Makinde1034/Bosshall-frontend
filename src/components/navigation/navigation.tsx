@@ -4,6 +4,7 @@ import logo from '../../assets/img/logo.png'
 import { useLocation } from 'react-router-dom'
 import search  from '../../assets/img/Search.png'
 import alarm from '../../assets/img/Notification.png'
+import { Link } from 'react-router-dom'
 // import userImage from '../../assets/img/Avatar.png'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 
@@ -28,8 +29,7 @@ function Navigation() {
 				<ul className={style.ul1}>
 					<li>Home</li>
 					<li>Profile</li>
-					<li>My channels</li>
-					<li></li>
+					<Link to="channel" >My channel</Link>
 				</ul>	
 				<ul className={style.ul2}>
 					<li>
