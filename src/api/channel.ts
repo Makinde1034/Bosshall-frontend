@@ -19,5 +19,12 @@ export default {
             method : "GET",
 
         })
+    },
+    getUserChannels(id : any){
+        return axios({
+            url : `${BASE_URL}/api/get-user-channels/${id}`,
+            method : "GET"
+
+        })
     }
 }

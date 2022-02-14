@@ -1,9 +1,14 @@
-export const isAuthenticated = () =>{
-    const isLoggedIn = localStorage.getItem("token")
+import api from '../api/auth'
 
-    if(isLoggedIn){
+
+export const isAuthenticated = async() =>{
+    const token = localStorage.getItem("token");
+
+    if(token){
         return true
     }else{
         return false
     }
+
+    
 }

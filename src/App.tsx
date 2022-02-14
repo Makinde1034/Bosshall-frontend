@@ -2,6 +2,7 @@ import React,{useState,Suspense} from 'react';
 import {useRoutes, Navigate} from 'react-router-dom'
 import Register from './views/register/register';
 import { isAuthenticated } from './helpers/authentication';
+import UserChannel from './views/userChannels/userChannels';
 
 
 
@@ -11,13 +12,14 @@ const Dashboard  = React.lazy(()=>import("./views/dashboard/dashboard"))
 const Channel = React.lazy(()=>import("./views/channel/channel"))
 const CreateChannel = React.lazy(()=>import("./views/createChannel/createChannel"))
 const SingleChannel = React.lazy(()=>import("./views/singleChannel/singleChannel"))
+const MyChannel = React.lazy(()=>import("./views/userChannels/userChannels"))
 
 function App() {
 
   
   
 
-  const routes = (isAuth:boolean) => [  
+  const routes = (isAuth:any) => [  
     {
       path : "*",
       element : <Register />
@@ -40,6 +42,10 @@ function App() {
         {
           path : "single-channel/:id",
           element : isAuth ? <SingleChannel /> : <Navigate to="/" />
+        },
+        {
+          path : "my-channel/:id",
+          element : isAuth ? <UserChannel /> : <Navigate to="/" />
         }
       ]
     },

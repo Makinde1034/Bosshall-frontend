@@ -38,6 +38,7 @@ function CreateChannel() {
 			const data = {image,name,address,about,websiteLink}
 			api.createChannel(data).then((res)=>{
 				dispatch( createChannelSuccess(false) )
+				console.log(res)
 				const id = res.data._id
 				navigate(`/dashboard/single-channel/${id}`)
 				console.log(res)

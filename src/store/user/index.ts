@@ -9,7 +9,7 @@ const initialState = {
     errMsg : "",
     loading  : false,
     updateProfileLoading : false,
-    _id : ""
+    _id : localStorage.getItem("userId") || ""
 }
 
 const userSlice = createSlice({

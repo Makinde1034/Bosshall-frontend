@@ -1,5 +1,6 @@
 import React from 'react';
 import style from "./video.module.scss"
+import comment from '../../assets/img/chat.png'
 
 interface videoProp {
 	url : string,
@@ -11,10 +12,16 @@ interface videoProp {
 function Video({url,title,image}:videoProp){
   	return (
 		<div className={style.video}>
-			<video src={url}></video>
+			<video controls src={url}></video>
 			<div className={style.video__details}>
-				<img src={image} alt="" />
-				<p>{title}</p>
+				<div className={style.image}>
+					<img src={image} alt="" />
+					<p>{title}</p>
+				</div>
+				<div className={style.comment}>
+					<img src={comment} alt="" />
+					<p>333</p>
+				</div>
 			</div>
 		</div>
     

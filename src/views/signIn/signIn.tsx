@@ -4,7 +4,7 @@ import message from '../../assets/img/mail.png'
 import api from '../../api/auth'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { setUser,setError,authRequest,authFailure, } from '../../store/user';
-import { saveToken,saveUserImage } from '../../helpers/storage';
+import { saveToken,saveUserImage,saveUserId } from '../../helpers/storage';
 
 
 
@@ -22,14 +22,16 @@ function SignIn() {
 		try{
 			const response = await api.login(data)
 			console.log(response)
+			
 			const userDetails = {
 				userImg :  response.data.User.userImage,
             	token : response.data.token,
             	_id : response.data.User._id
             
 			}
-			dispatch( setUser(userDetails) )
-			saveToken(response.data.token)
+			dispatch( setUser(userDetails) );
+			saveToken(response.data.token);
+			saveUserId(response.data.User._id);
 		}catch(err){
 
 		}

@@ -67,7 +67,11 @@ function SignChannel() {
 			</div>
 
 			<section className={style.videos} >
+				{/* {	
+					
+				} */}
 				{
+					channelDetails.videos.length === 0 ? ( <div>No vidoes yet</div> )  : 
 					channelDetails.videos.map((item,index)=>(
 						<div className={style.video} key={index}>
 							<Video title = {item.title} url={item.url} image={channelDetails.image}    />

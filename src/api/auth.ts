@@ -1,4 +1,5 @@
 import axios  from "axios";
+import { url } from "inspector";
 import type  { userDetails } from "../types";
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
@@ -30,10 +31,21 @@ export default {
             }
         })
     },
+
     getUser(){
         return axios({
             url : `${BASE_URL}/api/get-user`,
             method : "GET",
+            headers : {
+                "x-access-token" : localStorage.getItem("token")
+            }
+        })
+    },
+    
+    verifyAccess(){
+        return axios({
+            url : `${BASE_URL}/api/verifyAccess`,
+            method : "POST",
             headers : {
                 "x-access-token" : localStorage.getItem("token")
             }
