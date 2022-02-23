@@ -15,7 +15,7 @@ function Video({url,title,image}:videoProp){
 		<div className={style.video}>
 			<video  src={url}></video>
 			<div className={style.video__details}>
-				<p>It's fun outside</p>
+				<p>{title}</p>
 			</div>
 		</div>
     

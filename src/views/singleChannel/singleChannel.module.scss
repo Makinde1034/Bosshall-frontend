@@ -62,7 +62,9 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         margin-top: 20px;
-        gap: 20px;
+        row-gap: 50px;
+        column-gap: 20px;
+        
 
         .video{
             // background:tan;

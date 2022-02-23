@@ -1,5 +1,7 @@
 .randomVideo{
-    // background: pink;
+    cursor: pointer;
+    position: relative;
+    
 
     video{
         width: 100%;
@@ -18,6 +20,7 @@
             width: 30px;
             border-radius: 50%;
         }
+
         .details__text{
 
             .title{
@@ -33,4 +36,23 @@
            
         }
     }
+
+    .play{
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        right: 5px;
+        bottom: 30px;
+        // display: none;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: 0.3s ease;
+    }
 }
+
+.randomVideo:hover .play{
+    // display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+

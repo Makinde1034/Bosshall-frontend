@@ -3,15 +3,19 @@ import style from './uploadVideo.module.scss'
 import upload from '../../assets/img/action.png'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { setUploadModal } from '../../store/toggle/index'
-import api from '../../api/video'
+import videoApi from '../../api/video'
+import channelApi from '../../api/channel';
+import Preloader from '../prealoder/preloader';
+
 
 
 function UploadVideo() {
 
 	const [video,setVideo] = useState<any|null>();
-	const [title,setTitle] = useState("")
+	const [title,setTitle] = useState("")                          
 	const [videoExist,setVideoExist] = useState(false)
-	const [preloader,setPreloader] = useState(false)
+	const [videoUploadInProgress, setVideoUploadInProgress] = useState(false)
+	const [videoSelectLoading,setVideoSelectLoading] = useState(false)
 	const dispatch = useAppDispatch()
 
 	// get channel id from channel store
@@ -33,13 +37,14 @@ function UploadVideo() {
 		setVideoExist(true)
 
 		fileReader.onprogress =()=>{
-			setPreloader(true)
+			setVideoSelectLoading(true)
 			console.log("uploading in progress")
 		}
 
 		fileReader.onloadend = ()=>{
 			setVideo(fileReader.result)
-			console.log("upload end")
+			console.log("upload end");
+			setVideoSelectLoading(false);
 			
 		}
 	}
@@ -50,14 +55,19 @@ function UploadVideo() {
 	}
 
 	const uploadVid = (e:any) =>{
+		setVideoUploadInProgress(true);
 		e.preventDefault();
 		const data = {
 			video :video,
 			title : title,
 			channelId : channel._id
 		}
-		api.uploadVideo(data).then((res)=>{
+		videoApi.uploadVideo(data).then((res)=>{
 			console.log(res)
+			setVideoUploadInProgress(false)
+			dispatch( setUploadModal(false) )
+			window.location.reload();
+
 		}).catch((err)=>{
 			console.log(err)
 		})
@@ -71,8 +81,9 @@ function UploadVideo() {
 			</nav>
 			<form onSubmit={(e)=>uploadVid(e)}  action="">
 				<div className={style.upload__video}>
-					{
-						videoExist ? 
+					{	videoSelectLoading ? <p>Uploading</p> : 
+
+						(videoExist ? 
 						<video className={style.video} src={video}  ></video>
 						
 						:
@@ -82,8 +93,8 @@ function UploadVideo() {
 								<p className={style.drag}>Drag & Upload</p>
 								<p className={style.drag__upload}>Drag files or click here to upload</p>
 							</div>
-							<input onChange={(e)=>uploadVideo(e)} type="file" accept="video/*" />
-						</label> 
+							<input onChange={(e)=>uploadVideo(e)} type="file" required accept="video/*" />
+						</label> )
 					}
 					
 				</div>
@@ -93,7 +104,7 @@ function UploadVideo() {
 				</div>
 				<div className={style.buttons}>
 					<button onClick={(e)=>closeModal(e)}  className={style.cancel}>Cancel</button>
-					<button className={style.upload__btn} >Upload</button>
+					{ videoUploadInProgress ? <Preloader />  : <button className={style.upload__btn} >Upload</button>}
 				</div>
 			</form>
 			

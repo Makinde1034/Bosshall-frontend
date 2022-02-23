@@ -34,7 +34,7 @@ function Home() {
     return (
         <div>
             <div className={style.home}>
-                <p className={style.rand__p}>Random videos</p>
+                <p className={style.rand}>Random videos</p>
                 <div className={style.random__videos}>
                    {
                         videos.map((item,index) =>(

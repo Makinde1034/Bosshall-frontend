@@ -5,8 +5,9 @@
     padding-right: 100px;
     padding-left: 100px;
     
-    .rand__P{
-        font-weight: 700;
+    .rand{
+        font-weight: 600;
+        margin-bottom: 30px;
        
     }
     .random__videos{
@@ -14,6 +15,9 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         gap: 30px;
         margin-top: 10px;
+        background: #F9F9F9;
+        padding: 20px;
+        border-radius: 5px;
 
         div{
             // height: 150px;

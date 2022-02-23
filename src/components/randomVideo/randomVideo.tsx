@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './randomVideo.module.scss'
+import play from '../../assets/img/play.png'
 
 
 
@@ -21,6 +22,7 @@ function RandonVideos({url,title, channelImage} : randomVid) {
                 <p className={style.views}>200 views</p>
             </div>
         </div>
+        <img className={style.play} src={play} alt="" />
     </div>
   )
 }
