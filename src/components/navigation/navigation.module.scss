@@ -50,6 +50,7 @@
                 }
                 .userImage{
                     height: 30px;
+                    width: 30px;
                     border-radius: 100%;
                 }
             }
@@ -62,5 +63,20 @@
         }
     }
 
+    .menu{
+        img{
+            height: 20px;
+        }
+        display: none;
+    }
+
     
+}
+
+@media screen and (max-width:768px) {
+	.nav{
+        .ul__wrap{
+            display: none;
+        }
+    }
 }

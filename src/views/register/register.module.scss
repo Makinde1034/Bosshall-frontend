@@ -53,3 +53,31 @@ $primary :  #EF5350;
 	
 	}
 }
+
+@media screen and (max-width:768px) {
+
+	.register{
+
+		.register__left{
+			display: none;
+		}
+
+		.register__right{
+
+			width: 100%;
+			padding: 0px 20px 0px 20px;
+
+			.register__right__nav{
+
+				justify-content: center;
+				padding-right: 0px;
+				// background: red;
+
+			}
+			
+		}
+	}
+	
+
+	
+}

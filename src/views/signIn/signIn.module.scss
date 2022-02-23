@@ -17,15 +17,17 @@ $primary : #EF5350;
         width: 50%;
         text-align: center;
         color:#181819B2;
-;
+
     }
 
     .form{
+
         width: 50%;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 20px;
+
         .inputWrap{
             width: 100%;
             display: flex;
@@ -39,6 +41,7 @@ $primary : #EF5350;
                 height: 15px;
             }
         }
+
         input{
             width: 100%;
             height: 100%;
@@ -64,5 +67,22 @@ $primary : #EF5350;
             filter: brightness(9);
         }
 
+       
+
+    } 
+    
+    .errorMsg{
+        color : red;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width:768px) {
+	.signup{
+        
+        .form{
+            width: 100%;
+            
+        }
     }
 }

@@ -5,6 +5,7 @@ import SignUp from '../signUp/signUp'
 import SignIn from '../signIn/signIn';
 import { Routes,Route,Link } from 'react-router-dom'
 
+
 function Register() {
   return (
     <div>

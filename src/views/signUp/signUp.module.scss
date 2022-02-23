@@ -78,3 +78,16 @@ $primary : #EF5350;
         color: $primary;
     }
 }
+
+@media screen and (max-width:768px) {
+	.signup{
+        
+        p{
+            width: 100%;
+        }
+        .form{
+            width: 100%;
+            
+        }
+    }
+}

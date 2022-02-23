@@ -16,10 +16,19 @@ function UploadVideo() {
 
 	// get channel id from channel store
 	const channel = useAppSelector((state)=>state.ChannelSlice.channel)
+	
+	const isModalOpen = useAppSelector((state)=>state.toggleSlice.uploadModal)
  
 	const uploadVideo = (e:any) =>{
 		const fileReader = new FileReader();
 		const file = e.target.files[0]
+		console.log(file.size/1000000, "this is the file");
+
+		// ensure file size is not greater than 10mb
+		if(file.size/1000000 > 10 ){
+			return alert("file too large");
+		}
+
 		fileReader.readAsDataURL(file)
 		setVideoExist(true)
 
@@ -37,7 +46,7 @@ function UploadVideo() {
 
 	const closeModal = (e:any) =>{
 		e.preventDefault();
-		dispatch( setUploadModal(false) )
+		dispatch( setUploadModal(false) ) 
 	}
 
 	const uploadVid = (e:any) =>{
@@ -56,7 +65,7 @@ function UploadVideo() {
 
   return (
     <div>
-		<div className={style.upload}>
+		<div className={isModalOpen ? `${style.upload} ${style.upload__active}` : `${style.upload}`}>
 			<nav>
 				<p>Upload video</p>
 			</nav>
@@ -64,7 +73,7 @@ function UploadVideo() {
 				<div className={style.upload__video}>
 					{
 						videoExist ? 
-						<video className={style.video} src={video} autoPlay ></video>
+						<video className={style.video} src={video}  ></video>
 						
 						:
 						<label>
@@ -73,7 +82,7 @@ function UploadVideo() {
 								<p className={style.drag}>Drag & Upload</p>
 								<p className={style.drag__upload}>Drag files or click here to upload</p>
 							</div>
-							<input onChange={(e)=>uploadVideo(e)} type="file" />
+							<input onChange={(e)=>uploadVideo(e)} type="file" accept="video/*" />
 						</label> 
 					}
 					

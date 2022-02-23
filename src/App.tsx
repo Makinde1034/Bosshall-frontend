@@ -3,6 +3,8 @@ import {useRoutes, Navigate} from 'react-router-dom'
 import Register from './views/register/register';
 import { isAuthenticated } from './helpers/authentication';
 import UserChannel from './views/userChannels/userChannels';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 
 
@@ -13,27 +15,39 @@ const Channel = React.lazy(()=>import("./views/channel/channel"))
 const CreateChannel = React.lazy(()=>import("./views/createChannel/createChannel"))
 const SingleChannel = React.lazy(()=>import("./views/singleChannel/singleChannel"))
 const MyChannel = React.lazy(()=>import("./views/userChannels/userChannels"))
+const Home = React.lazy(()=>import("./views/home/home"))
 
 function App() {
 
   
   
 
-  const routes = (isAuth:any) => [  
+  const routes = (isAuth:boolean) => [  
     {
       path : "*",
       element : <Register />
     },
+
     {
       path : "dashboard",
       element : isAuth ? <Dashboard /> : <Navigate to="/" /> ,
       children: [
-        { path: '', element: <ProfileSetup /> },
+        {
+          path : "home",
+          element : isAuth ? <Home /> : <Navigate to="/" />
+        },
+        { 
+          path: '', 
+          element: isAuth  ? <ProfileSetup /> : <Navigate to="/" /> 
+        
+        },
+
         {
           path : "channel",
           element : isAuth ? <Channel /> : <Navigate to="/" /> ,
           
         },
+
         {
           path : "create-channel",
           element : isAuth ? <CreateChannel /> : <Navigate to="/" /> ,

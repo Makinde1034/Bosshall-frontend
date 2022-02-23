@@ -33,6 +33,7 @@ function CreateChannel() {
 
 	const createChannel = (e:any) =>{
 		e.preventDefault();
+
 		return new Promise((resolve)=>{
 			dispatch( createChannelRequest(true) )
 			const data = {image,name,address,about,websiteLink}
@@ -47,6 +48,7 @@ function CreateChannel() {
 				dispatch( createChannelFailure(false) )
 			})
 		})
+		
 	}
 
 	const goto = () =>{

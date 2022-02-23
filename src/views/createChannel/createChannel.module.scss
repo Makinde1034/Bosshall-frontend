@@ -6,7 +6,7 @@
 }
 
 .create{
-    height: calc(100vh - 60px );
+    min-height: calc(100vh - 60px );
 
     .nav{
         height: 60px;
@@ -35,6 +35,7 @@
     .channel{
         padding-left: 200px;
         padding-right: 200px;
+
      
         .channel__form{
             width: 100%;
@@ -44,13 +45,14 @@
             padding: 10px;
 
             header{
+
                 margin-bottom: 30px;
                 h3{
-                    font-size: 14px;
+                    font-size: 0.875rem;
                     margin-bottom: 10px;
                 }
                 p{
-                    font-size: 12px;
+                    font-size: 0.75rem;
                 }
             }
 
@@ -58,57 +60,112 @@
                 @include center(center,center ,column );
 
                 .input__wrap{
-                @include center(flex-end,center ,row );
-             
-                margin-bottom: 30px;
-                input[type="file"]{
-                    display: none;
-                }
-                .logoWrap{
-                    width: 300px;
-                    // background: red;
-                    height: 50px;
-                    display: flex;
-                    justify-content: flex-start;
-                    position: relative;
-                    .logo{
-                        height: 30px;
-                        width: 30px;
-                        cursor: pointer;
+                    @include center(flex-end,center ,row );
+                
+                    margin-bottom: 30px;
+
+                    input[type="file"]{
+                        display: none;
                     }
-                    .upload{
-                        height: 25px;
-                        width: 25px;
-                        position: absolute;
-                        bottom: 0px;
-                        left: 30px;
+
+                    .logoWrap{
+                        width: 300px;
+                        // background: red;
+                        height: 50px;
+                        display: flex;
+                        justify-content: flex-start;
+                        position: relative;
+
+                        .logo{
+                            height: 30px;
+                            width: 30px;
+                            cursor: pointer;
+                        }
+                        .upload{
+                            height: 25px;
+                            width: 25px;
+                            position: absolute;
+                            bottom: 0px;
+                            left: 30px;
+                        }
+                    }
+                    label{
+                        color: rgba(24,24,25,0.7);
+                        margin-right: 20px;
+                        margin-right: 10px;
+                        width: 100px;
+                        display: flex;
+                        font-size: 0.875rem;
+                        justify-content: flex-end;
+                        font-weight: 500;
+                    
+                    }
+                    input,textarea{
+                        width: 300px;
+                        height: 40px;
+                        border: 1px solid #E6E7E9;
+                        border-radius: 3px;
+                        outline: none;
+                        padding-left: 10px;
+                    
+                    }
+                    textarea{
+                        height: 100px;
                     }
                 }
-                label{
-                    color: rgba(24,24,25,0.7);
-                    margin-right: 20px;
-                    margin-right: 10px;
-                    width: 100px;
-                    display: flex;
-                    font-size: 14px;
-                    justify-content: flex-end;
-                    font-weight: 500;
-                  
-                }
-                input,textarea{
-                    width: 300px;
-                    height: 40px;
-                    border: 1px solid #E6E7E9;
-                    border-radius: 3px;
-                    outline: none;
-                    padding-left: 10px;
-                  
-                }
-                textarea{
-                    height: 100px;
-                }
-            }
             }
         }
     }
+}
+
+@media screen and (max-width:768px) {
+
+	.create{
+
+        .nav{
+            padding-left: 20px;
+            padding-right: 20px;
+            
+        }
+
+        .channel{
+            padding-left: 20px;
+            padding-right: 20px;
+
+            .channel__form{
+        
+                
+                .fields{
+               
+                    .input__wrap{
+                        @include center(center,flex-start,column );
+                        width: 100%;
+
+                        .logoWrap{
+                            
+                            width: 100%;
+                        }
+
+                        label{
+                            
+                            justify-content: flex-start;
+                            margin-bottom: 10px;
+                        }
+
+                        input,textarea{
+                            width: 100%;
+                            // border: 1px solid red;
+                        }
+
+                    }
+                    
+                    
+                }
+            }
+        }
+    }
+}
+
+*{
+    // border: 1px solid red;
 }

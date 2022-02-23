@@ -14,6 +14,7 @@
     justify-content: flex-end;
     padding-left: 200px;
     padding-right: 200px;
+
     button{
         height: 30px;
         width: 70px;
@@ -31,6 +32,7 @@
 .body{
     padding-left: 200px;
     padding-right: 200px;
+
     .banner{
         width: 100%;
         height: 240px;
@@ -43,6 +45,7 @@
         padding: 20px;
         position: relative;
         z-index: 10;
+
         .banner__nav{
             display: flex;
             justify-content: flex-end;
@@ -126,10 +129,12 @@
 
         .form{
             @include center(center,center,column );
+
             .input__wrap{
                 @include center(flex-end,center ,row );
              
                 margin-bottom: 30px;
+
                 label{
                     color: rgba(24,24,25,0.7);
                     margin-right: 20px;
@@ -140,6 +145,7 @@
                     font-weight: 400;
                   
                 }
+
                 input,textarea{
                     width: 300px;
                     height: 40px;
@@ -149,6 +155,7 @@
                     padding-left: 10px;
                   
                 }
+
                 textarea{
                     height: 100px;
                 }
@@ -158,3 +165,61 @@
 
 }
 
+@media screen and (max-width:768px) {
+    .nav{
+        
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .body{
+
+        padding-left: 20px;
+        padding-right: 20px;
+        
+
+        .banner{
+
+            height: auto;
+            border-radius: 0px;
+
+            .banner__nav{
+                label{
+
+                    span{
+                        padding: 7px 10px;
+                        
+                    }
+                }
+            }
+            .user{
+                img{
+                    height: 50px;
+                    width: 50px;
+                }
+            }
+        }
+
+        .profile__info{
+
+         
+            .form{
+
+                .input__wrap{
+                    @include center(flex-start,flex-start ,column);
+                    width: 100%;
+
+                    label{
+                        justify-content: flex-start;
+                        margin-bottom: 10px;
+                        
+                    }
+
+                    input,textarea{
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
+}

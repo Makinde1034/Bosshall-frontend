@@ -12,6 +12,10 @@ import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { useSelector } from 'react-redux';
 import UploadVideo from '../../components/uploadVideo/uploadVideo';
 import Video from '../../components/video/video';
+import ModalBackdrop from '../../components/modalBackdrop/modalBackdrop'
+
+
+
 
 function SignChannel() {
 	const { id } = useParams();
@@ -74,13 +78,14 @@ function SignChannel() {
 					channelDetails.videos.length === 0 ? ( <div>No vidoes yet</div> )  : 
 					channelDetails.videos.map((item,index)=>(
 						<div className={style.video} key={index}>
-							<Video title = {item.title} url={item.url} image={channelDetails.image}    />
+							<Video title = {item.title} url={item.url} image={channelDetails.image} likes={item.likes}    />
 						</div>
 					))
 				}
 			</section>
 		</div>
-		{ isModalOpen && <UploadVideo />}
+		<UploadVideo />
+		<ModalBackdrop />
     </div>
   )
 }

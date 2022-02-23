@@ -6,26 +6,20 @@ interface videoProp {
 	url : string,
 	title : string,
 	image : string,
+	likes : number
 
 }
 
 function Video({url,title,image}:videoProp){
   	return (
 		<div className={style.video}>
-			<video controls src={url}></video>
+			<video  src={url}></video>
 			<div className={style.video__details}>
-				<div className={style.image}>
-					<img src={image} alt="" />
-					<p>{title}</p>
-				</div>
-				<div className={style.comment}>
-					<img src={comment} alt="" />
-					<p>333</p>
-				</div>
+				<p>It's fun outside</p>
 			</div>
 		</div>
     
-  )
+  	)
 }
 
 export default Video;

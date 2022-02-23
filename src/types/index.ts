@@ -10,3 +10,12 @@ export interface userStateAction {
     loading  : boolean,
     updateProfileLoading : boolean
 }
+
+export interface video {
+    _id : string,
+    title : string,
+    url : string,
+    likes : number,
+    channelId : string,
+    channelImage : string
+}

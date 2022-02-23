@@ -1,15 +1,16 @@
 import { createSlice,PayloadAction } from '@reduxjs/toolkit'
+import type { video } from '../../types'
 
-interface videos{
-    url : string,
-    title : string
-}
+// interface videos{
+//     url : string,
+//     title : string
+// }
 interface channel{
     name : string,
     image : string,
     owner : string,
     _id : string,
-    videos :videos[]
+    videos :video[]
 }
 interface channelProps{
     createChannelLoading : boolean,

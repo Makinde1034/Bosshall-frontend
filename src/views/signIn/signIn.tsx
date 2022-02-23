@@ -5,6 +5,8 @@ import api from '../../api/auth'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { setUser,setError,authRequest,authFailure, } from '../../store/user';
 import { saveToken,saveUserImage,saveUserId } from '../../helpers/storage';
+import Preloader from '../../components/prealoder/preloader';
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -12,7 +14,14 @@ function SignIn() {
 
 	const [ email, setEmail ] = useState("")
 	const [ password, setPassword ] = useState("");
+	const [disabled, setDisabled]  = useState(false)
 	const dispatch = useAppDispatch()
+	const errorMsg = useAppSelector((state)=>state.userSlice.errMsg);
+	const loading = useAppSelector((state)=>state.userSlice.loading);
+
+	const navigate = useNavigate();
+
+	
 
 	const login = async (e:any) =>{
 		e.preventDefault()
@@ -22,6 +31,7 @@ function SignIn() {
 		try{
 			const response = await api.login(data)
 			console.log(response)
+			setDisabled(true)
 			
 			const userDetails = {
 				userImg :  response.data.User.userImage,
@@ -32,8 +42,12 @@ function SignIn() {
 			dispatch( setUser(userDetails) );
 			saveToken(response.data.token);
 			saveUserId(response.data.User._id);
-		}catch(err){
-
+			navigate("/dashboard")
+		}catch(err:any){
+			console.log(err.response.data.message);
+			dispatch( authFailure(false) )
+			dispatch( setError(err.response.data.message) )
+			setDisabled(false)
 		}
 	}
 
@@ -50,9 +64,10 @@ function SignIn() {
 			<div className={style.inputWrap}>
 				<input onChange={(e)=>setPassword(e.target.value)} placeholder='*******' required  type="password" />
 			</div>
-			<button>Sign in</button>
+			{ <button disabled={ disabled }>Sign in</button> }
 		
 		</form>
+		<p className={style.errorMsg}>{errorMsg}</p>
     </div>
   
   )

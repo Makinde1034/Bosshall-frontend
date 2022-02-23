@@ -3,7 +3,7 @@ import axios  from "axios";
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export default {
-   uploadVideo(data : any){
+    uploadVideo(data : any){
         return axios({
             url : `${BASE_URL}/api/upload-video`,
             method : 'POST',
@@ -12,5 +12,13 @@ export default {
             },
             data : data
         })
-   }
+    },
+
+    getRandomVideos(){
+        return axios({
+            url : `${BASE_URL}/api/get-random-videos`,
+            method : "GET"
+        })
+    }
+
 }

@@ -1,0 +1,23 @@
+
+
+.home{
+    min-height: 90vh;
+    padding-right: 100px;
+    padding-left: 100px;
+    
+    .rand__P{
+        font-weight: 700;
+       
+    }
+    .random__videos{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 30px;
+        margin-top: 10px;
+
+        div{
+            // height: 150px;
+            // background: black;
+        }
+    }
+}

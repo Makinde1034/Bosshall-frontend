@@ -4,10 +4,15 @@ import logo from '../../assets/img/logo.png'
 import { useLocation } from 'react-router-dom'
 import search  from '../../assets/img/Search.png'
 import alarm from '../../assets/img/Notification.png'
+import menu from '../../assets/img/list (1).png'
+import more from '../../assets/img/more.png'
 import { Link } from 'react-router-dom'
 // import userImage from '../../assets/img/Avatar.png'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
+
+
+
 
 function Navigation() {
 
@@ -35,7 +40,7 @@ function Navigation() {
 			</div>
 			<div className={style.ul__wrap}>
 				<ul className={style.ul1}>
-					<li>Home</li>
+					<Link to={"home"} >Home</Link>
 					<li>Profile</li>
 					<li onClick={goToChannels} >My channel</li>
 				</ul>	
@@ -51,7 +56,9 @@ function Navigation() {
 					</li>
 				</ul>
 			</div>
-			
+			<div className={style.menu}>
+				<img src={more} alt="" />
+			</div>
 		</nav>
     </div>
   )
