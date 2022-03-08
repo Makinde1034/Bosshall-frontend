@@ -19,3 +19,27 @@ export interface video {
     channelId : string,
     channelImage : string
 }
+
+export interface channel {
+    _id : string,
+    name : string,
+    image : string 
+    
+}
+
+
+
+export interface comment {
+    _id: string
+    comment: string
+    owner: string
+    videoId: string
+    time : Date
+    users: {
+        
+        fullname: string
+        userImage: string,
+        
+    }
+    
+}

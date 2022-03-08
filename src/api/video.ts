@@ -19,6 +19,13 @@ export default {
             url : `${BASE_URL}/api/get-random-videos`,
             method : "GET"
         })
+    },
+
+    getVideo(id : any){
+        return axios({
+            url : `${BASE_URL}/api/get-video/${id}`,
+            method : "GET"
+        })
     }
 
 }

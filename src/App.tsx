@@ -16,6 +16,7 @@ const CreateChannel = React.lazy(()=>import("./views/createChannel/createChannel
 const SingleChannel = React.lazy(()=>import("./views/singleChannel/singleChannel"))
 const MyChannel = React.lazy(()=>import("./views/userChannels/userChannels"))
 const Home = React.lazy(()=>import("./views/home/home"))
+const Video = React.lazy(()=>import("./views/video/video"))
 
 function App() {
 
@@ -60,6 +61,10 @@ function App() {
         {
           path : "my-channel/:id",
           element : isAuth ? <UserChannel /> : <Navigate to="/" />
+        },
+        {
+          path : "video/:id",
+          element :  isAuth ? <Video /> : <Navigate to="/" />
         }
       ]
     },

@@ -26,5 +26,11 @@ export default {
             method : "GET"
 
         })
+    },
+    getRandomChannels(){
+        return axios({
+            url : `${BASE_URL}/api/get-random-channels`,
+            method : "GET"
+        })
     }
 }
