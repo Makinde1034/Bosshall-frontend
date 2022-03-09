@@ -5,6 +5,9 @@ import { isAuthenticated } from './helpers/authentication';
 import UserChannel from './views/userChannels/userChannels';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAppSelector, useAppDispatch } from './store/hooks';
 
 
 
@@ -21,6 +24,7 @@ const Video = React.lazy(()=>import("./views/video/video"))
 function App() {
 
   
+  const isAuth = useAppSelector((state)=>state.authReducer.isAuth)
   
 
   const routes = (isAuth:boolean) => [  
@@ -35,7 +39,7 @@ function App() {
       children: [
         {
           path : "home",
-          element : isAuth ? <Home /> : <Navigate to="/" />
+          element :  <Home />
         },
         { 
           path: '', 
@@ -64,7 +68,7 @@ function App() {
         },
         {
           path : "video/:id",
-          element :  isAuth ? <Video /> : <Navigate to="/" />
+          element :  <Video /> 
         }
       ]
     },
@@ -73,7 +77,7 @@ function App() {
   ]
 
   function Route(){
-    const routing = useRoutes(routes(isAuthenticated()))
+    const routing = useRoutes(routes(isAuth))
 
     return routing
   }
@@ -85,7 +89,7 @@ function App() {
       <Suspense fallback={<p>Loading</p>}>
         <Route />
       </Suspense>
-      
+      <ToastContainer />
     </div>
   );
 }

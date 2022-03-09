@@ -26,6 +26,14 @@ export default {
             url : `${BASE_URL}/api/get-video/${id}`,
             method : "GET"
         })
+    },
+
+    getRelatedVideos(id:string){
+        return axios({
+            url : `${BASE_URL}/api/get-related-videos/${id}`,
+            method : "GET",
+           
+        })
     }
 
 }

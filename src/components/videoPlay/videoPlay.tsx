@@ -6,6 +6,8 @@ import share from '../../assets/img/share.png'
 import unlike from '../../assets/img/thumb-down.png'
 import feelingsApi from '../../api/feelings'
 import { useAppSelector } from '../../store/hooks'
+import { toast,ToastOptions } from 'react-toastify'
+import ToastMsg from '../../components/toastMsg/toastMsg'
 
 
 interface videoPlayProps{
@@ -21,6 +23,19 @@ const VideoPlay = ({videoId, url, title, likes}:videoPlayProps) => {
 
     const [isLike, setIsLike] = useState(null);         
     const [dummyLikeCount, setDummyLikeCount] = useState(0)
+
+    const toastOptions: ToastOptions = {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        // transition: Slide,
+        rtl: false,
+        closeButton: false,
+    }
 
     useEffect(()=>{
         checkVideoLike()
@@ -43,7 +58,7 @@ const VideoPlay = ({videoId, url, title, likes}:videoPlayProps) => {
             if(status === 'liked'){
                 setDummyLikeCount(dummyLikeCount + 1)
             }
-            
+            toast(<ToastMsg />, toastOptions)
            console.log(res,"isviedolike")
 
             
@@ -51,7 +66,11 @@ const VideoPlay = ({videoId, url, title, likes}:videoPlayProps) => {
             console.log(res)
 
         }catch(err){
+
             console.log(err)
+            toast.error("An error occured while submitting your feedback",{
+                position: toast.POSITION.BOTTOM_LEFT
+            });
         }
     }
 

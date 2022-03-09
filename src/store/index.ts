@@ -5,6 +5,8 @@ import toggleSlice from './toggle/index'
 import randomVideos from './randomVideos'
 import randomChannels from './randomChannels'
 import commentReducer from './comments/'
+import RelatedVideosReducer from './relatedVideos'
+import authReducer from './auth'
 
 
 const store = configureStore({
@@ -15,7 +17,9 @@ const store = configureStore({
         toggleSlice,
         randomVideos,
         randomChannels,
-        commentReducer
+        commentReducer,
+        RelatedVideosReducer,
+        authReducer
     }
 })
 

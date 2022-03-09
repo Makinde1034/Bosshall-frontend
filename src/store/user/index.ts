@@ -10,6 +10,7 @@ const initialState = {
     loading  : false,
     updateProfileLoading : false,
     _id : localStorage.getItem("userId") || ""
+    
 }
 
 const userSlice = createSlice({

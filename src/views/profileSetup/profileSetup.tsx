@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import style from './profileSetup.module.scss'
 import CompleteButton from '../../components/buttons/completeButton/completeButton'
 import banner from '../../assets/img/Rectangle.png'
@@ -6,6 +6,7 @@ import user from '../../assets/img/Avatar.png'
 import api from '../../api/auth'
 import { saveUserImage } from '../../helpers/storage'
 import { setUser,updateProfileRequest,updateProfileSuccess,updateProfileFailure } from '../../store/user/index'
+import { setAuth } from '../../store/auth/index'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import Preloader from '../../components/prealoder/preloader';
 
@@ -21,7 +22,8 @@ function ProfileSetup() {
 	const [email,setEmail] = useState("")
   const dispatch = useAppDispatch()
   // const userDetails = useAppSelector((state)=>state.userSlice.userDetails)
-	const loading = useAppSelector((state)=>state.userSlice.updateProfileLoading)
+	const loading = useAppSelector((state)=>state.userSlice.updateProfileLoading);
+ 
 
 
 
@@ -66,8 +68,22 @@ function ProfileSetup() {
 		})
 	}
 
+  useEffect(()=>{
+    checkAuth()
+  },[])
 
 
+  const checkAuth = async () => {
+
+    try{
+      const res = await  api.verifyAccess();
+      console.log(res)
+      dispatch( setAuth(res.data.auth) )
+    }catch(err){
+      console.log(err)
+    }
+    
+  }
 
   return (
     <div style={{paddingBottom:"100px"}}>

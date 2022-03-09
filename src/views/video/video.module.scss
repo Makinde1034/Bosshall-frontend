@@ -6,7 +6,7 @@
 
 
     .video__left{
-        width: 60%;
+        width: 70%;
 
         .video__play{
             width: 100%;
@@ -54,5 +54,9 @@
             border-bottom: 1px solid rgb(240, 237, 237);
             
         }
+    }
+    .video__right{
+        width: 30%;
+        padding-left: 20px;
     }
 }

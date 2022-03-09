@@ -15,7 +15,7 @@ interface createCommentProps {
 function CreateComment({ id }:createCommentProps) {
 
 
-  const [comment,setComment] = useState("");
+  const [comment,setComment] = useState("");  
   const dispatch = useAppDispatch();
   const userImg = useAppSelector((state)=> state.userSlice.userImg)
 

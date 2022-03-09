@@ -18,6 +18,7 @@ export interface video {
     likes : number,
     channelId : string,
     channelImage : string
+    time : Date
 }
 
 export interface channel {

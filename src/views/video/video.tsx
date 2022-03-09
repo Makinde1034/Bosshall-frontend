@@ -6,18 +6,21 @@ import videoApi from '../../api/video'
 import commentApi from '../../api/coments'
 import CreateComment from '../../components/createComment/createComment'
 import { setVideoComments } from '../../store/comments'
+import { setRelatedVideos } from '../../store/relatedVideos'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Comment from '../../components/comment/comments'
-import { promises } from 'stream'
+import RelatedVideos from '../../components/relatedVideos/relatedVideos'
+
 
 
 
 function Video() {
 
-    const [ videoData, setVideoData ] = useState({
+    const [ videoData, setVideoData ] = useState({      
         url : "",
         title : "",
         channelImage : "",
+        channelId : "",
         id : "",
         likes : 0
         
@@ -25,12 +28,13 @@ function Video() {
 
     const { id } = useParams();
     const dispatch = useAppDispatch();
-    const comments = useAppSelector((state)=>state.commentReducer.comments)
+    const comments = useAppSelector((state)=>state.commentReducer.comments);
+    const relatedVids = useAppSelector((state)=>state.RelatedVideosReducer.relatedVideos);
     
 
     useEffect(()=>{
-        Promise.all([getVideo(), getVideoComments()]);
-    },[])
+        Promise.all([getVideo(), getVideoComments(),]);  
+    },[id])
 
     const getVideo = async () =>{
 
@@ -41,9 +45,14 @@ function Video() {
                 url : res.data.vid.url, 
                 title:res.data.vid.title, 
                 channelImage : res.data.vid.channelImage, 
+                channelId : res.data.vid.channelId,
                 id : res.data.vid._id, 
                 likes : res.data.vid.likes
             });
+            loadRelatedVideos( res.data.vid.channelId)
+            
+
+
         }catch(err){
             console.log(err);
         }
@@ -57,13 +66,34 @@ function Video() {
             const res = await commentApi.getComments(id);
             console.log(res,"comments");
 
-            dispatch(setVideoComments(res.data)) 
+            dispatch(setVideoComments(res.data))
 
         }catch(err){
 
             console.log(err)
         }
 
+        
+    }
+
+    // get related videos
+    const loadRelatedVideos = async (channelId : string) =>{
+        try{
+            
+
+            const relatedVideos = await videoApi.getRelatedVideos(channelId);
+            // filter related videos to ensure that it deos not contain recent video playing.
+            const filteredRelatedVideos = relatedVideos.data.videos.filter((i:any)=>i._id !== id)
+
+            dispatch( setRelatedVideos(filteredRelatedVideos) )
+            console.log(filteredRelatedVideos, "filtered")
+
+            console.log(relatedVideos,"this are related videos")
+
+        }catch(err){
+
+            console.log(err)
+        }
         
     }
     
@@ -100,7 +130,13 @@ function Video() {
                     }
                 </div>
             </div>
-            <div className={style.video__right}></div>
+            <div className={style.video__right}>
+                {
+                    relatedVids.map((item,index)=>(
+                        <RelatedVideos date = {item.time} title={item.title} id = {item._id} url={item.url} />
+                    ))
+                }
+            </div>
         </div>
     )
 }

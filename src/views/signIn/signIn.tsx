@@ -4,6 +4,7 @@ import message from '../../assets/img/mail.png'
 import api from '../../api/auth'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { setUser,setError,authRequest,authFailure, } from '../../store/user';
+import { setAuth } from '../../store/auth';
 import { saveToken,saveUserImage,saveUserId } from '../../helpers/storage';
 import Preloader from '../../components/prealoder/preloader';
 import { useNavigate } from 'react-router-dom'
@@ -42,7 +43,9 @@ function SignIn() {
 			dispatch( setUser(userDetails) );
 			saveToken(response.data.token);
 			saveUserId(response.data.User._id);
+			dispatch(setAuth(true))
 			navigate("/dashboard")
+
 		}catch(err:any){
 			console.log(err.response.data.message);
 			dispatch( authFailure(false) )

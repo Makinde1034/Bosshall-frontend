@@ -6,6 +6,7 @@ import { setUploadModal } from '../../store/toggle/index'
 import videoApi from '../../api/video'
 import channelApi from '../../api/channel';
 import Preloader from '../prealoder/preloader';
+import { toast,ToastOptions } from 'react-toastify'
 
 
 
@@ -67,6 +68,7 @@ function UploadVideo() {
 			setVideoUploadInProgress(false)
 			dispatch( setUploadModal(false) )
 			window.location.reload();
+			toast.success("Video succeessfully uploaded")
 
 		}).catch((err)=>{
 			console.log(err)
@@ -100,7 +102,7 @@ function UploadVideo() {
 				</div>
 				<div className={style.upload__title}>
 					<label htmlFor="">Title</label>
-					<input onChange={(e)=>setTitle(e.target.value)} value={title} type="text" />
+					<input onChange={(e)=>setTitle(e.target.value)} required value={title} type="text" />
 				</div>
 				<div className={style.buttons}>
 					<button onClick={(e)=>closeModal(e)}  className={style.cancel}>Cancel</button>
