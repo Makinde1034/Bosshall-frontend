@@ -16,6 +16,8 @@ import RelatedVideos from '../../components/relatedVideos/relatedVideos'
 
 function Video() {
 
+    const [activeComment, setActiveComment] = React.useState("")
+
     const [ videoData, setVideoData ] = useState({      
         url : "",
         title : "",
@@ -125,12 +127,22 @@ function Video() {
                 <div className={style.comment}>
                     {
                         comments.map((item,index)=>(
-                            <Comment comment = {item.comment} commentorImage = {item.users.userImage} time = {item.time} commentorName = {item.users.fullname} />
+                            <Comment 
+                                key = {item._id}
+                                activeComment={activeComment} 
+                                setActiveComment = {setActiveComment}
+                                comment = {item.comment} 
+                                commentorImage = {item.users.userImage} 
+                                time = {item.time} 
+                                commentorName = {item.users.fullname} 
+                                commentId = {item._id}
+                            />
                         ))
                     }
                 </div>
             </div>
             <div className={style.video__right}>
+                <h2 style={{fontSize:"18px",marginBottom:"30px"}}>Related videos</h2>
                 {
                     relatedVids.map((item,index)=>(
                         <RelatedVideos date = {item.time} title={item.title} id = {item._id} url={item.url} />

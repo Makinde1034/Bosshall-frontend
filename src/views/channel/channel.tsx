@@ -6,12 +6,12 @@ import CompleteButton from '../../components/buttons/completeButton/completeButt
 function Channel() {
   return (
     <div>
-			<div className={style.channel}>
-				<img src={channel} alt="" />
-				<h3>Create your channel</h3>
-				<p>Sharing content and reaching a wider range of audience <br /> is just a click away</p>
-				<CompleteButton text="Create channel" />
-			</div>
+		<div className={style.channel}>
+			<img src={channel} alt="" />
+			<h3>Create your channel</h3>
+			<p>Sharing content and reaching a wider range of audience <br /> is just a click away</p>
+			<CompleteButton text="Create channel" />
+		</div>
     </div>
   )
 }

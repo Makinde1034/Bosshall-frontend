@@ -26,3 +26,13 @@
         
     }
 }
+
+@media screen and (max-width:768px) {
+    .video{
+        flex-direction: column;
+
+        .video__left{
+            width: 100%;
+        }
+    }
+}

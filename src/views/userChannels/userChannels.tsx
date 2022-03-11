@@ -40,7 +40,7 @@ function UserChannel() {
     return (
     <div className={style.userchannel__wrap}>
         <div className={style.userchannel}> 
-            {   
+            {   channels.length === 0 ? (<div>You have not created a channel</div>) :
                 channels.map((item,index)=>(
                     <div onClick={()=>goToChannel(item._id)} className={style.box}>
                         <img src={item.image} alt="" />

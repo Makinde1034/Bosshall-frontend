@@ -106,7 +106,7 @@ const VideoPlay = ({videoId, url, title, likes}:videoPlayProps) => {
                     <img onClick={()=>likeUnlikeVideo("liked")} className={style.like} src={ isLike === "liked"  ? likeFill : like } alt="" />
                     <p>{likes + dummyLikeCount}</p>
                 </span>
-                <span>
+                <span className={style.middle}>
                    <img onClick={()=>likeUnlikeVideo("unliked")} className={style.unlike} src={ isLike === "unliked" ? likeFill : like} alt="" /> 
                 </span>
                 <span>

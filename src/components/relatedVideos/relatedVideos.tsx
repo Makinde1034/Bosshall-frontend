@@ -25,7 +25,7 @@ function RelatedVideos({title,url,date, id}:realatedVideoProps) {
         <div className={style.video__info}>
             <p className={style.video__title}>{title}</p>
             <p className={style.video__channel}>Psychology-home</p>
-            <p className={style.video__date}>{timeSince( new Date(date) )}</p>
+            <p className={style.video__date}>{timeSince( new Date(date) )} ago</p>
         </div>
     </div>
   )

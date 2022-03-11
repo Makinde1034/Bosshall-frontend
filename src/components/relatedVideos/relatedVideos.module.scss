@@ -15,6 +15,7 @@
         video{
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
     }
     .video__title{
@@ -24,5 +25,14 @@
     .video__date,.video__channel{
         font-size: 12px;
         margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .related{
+        .video{
+            width: 120px;
+            height: 80px;
+        }
     }
 }

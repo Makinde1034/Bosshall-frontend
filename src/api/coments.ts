@@ -24,5 +24,14 @@ export default {
             // }
 
         })
+    },
+
+    // get comment replies
+    getCommentReplies(id : any){
+        return axios({
+            url : `${BASE_URL}/api/get-comment-replies/${id}`,
+            method : "GET",
+            
+        })
     }
 }

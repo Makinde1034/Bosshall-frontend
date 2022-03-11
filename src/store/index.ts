@@ -7,6 +7,7 @@ import randomChannels from './randomChannels'
 import commentReducer from './comments/'
 import RelatedVideosReducer from './relatedVideos'
 import authReducer from './auth'
+import replyReducer from './replies'
 
 
 const store = configureStore({
@@ -19,7 +20,8 @@ const store = configureStore({
         randomChannels,
         commentReducer,
         RelatedVideosReducer,
-        authReducer
+        authReducer,
+        replyReducer
     }
 })
 

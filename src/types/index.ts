@@ -44,3 +44,17 @@ export interface comment {
     }
     
 }
+
+export interface reply {
+    _id: string
+    reply: string
+    commentId : string
+    owner: string
+    time : Date
+    users: {
+        
+        fullname: string
+        userImage: string,
+        
+    }
+}

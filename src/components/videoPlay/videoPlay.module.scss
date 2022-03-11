@@ -30,7 +30,10 @@
             display: flex;
             span{
                 display: flex ;
-                margin-right: 20px;
+                // margin-right: 20px;
+            }
+            .middle{
+                margin: 0px 20px 0px 20px;
             }
             
             .unlike{
@@ -51,5 +54,25 @@
         }
 
         
+    }
+}
+
+@media screen and (max-width:768px) {
+    .videoplay{
+        video{
+            height: 300px;
+            padding: 0;
+            padding: 0;
+            object-fit:cover;
+        }
+
+        .videoplay__actions{
+            padding:0px 20px 0px 20px;
+        }
+
+        img{
+            height: 10px;
+            width: 10px;
+        }
     }
 }
