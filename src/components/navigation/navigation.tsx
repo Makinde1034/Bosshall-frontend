@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import style from './navigation.module.scss'
 import logo from '../../assets/img/logo.png'
 import { useLocation } from 'react-router-dom'
@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom'
 // import userImage from '../../assets/img/Avatar.png'
 import { useNavigate } from 'react-router-dom'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
+import { createSearchParams } from "react-router-dom";
+import videoApi from '../../api/video'
 
 
 
@@ -17,16 +19,28 @@ import { useAppDispatch,useAppSelector } from '../../store/hooks'
 function Navigation() {
 
 
-
 	const id = useAppSelector((state)=>state.userSlice._id)
 	const userImage = useAppSelector((state)=>state.userSlice.userImg)
 	const navigate = useNavigate()
 	const location = useLocation()
+
+	const [ searchParam, setSearchParams ] = useState({search_query : ""})
 	
 
 	const goToChannels = () =>{
 		navigate(`/dashboard/my-channel/${id}`)
 	}
+
+    const goToSearchPage = (e:any) => {
+		e.preventDefault();
+
+        navigate({
+            pathname: "search",
+            search: `?${createSearchParams(searchParam)}`
+        });
+
+		
+    }
 	
 
 	
@@ -34,9 +48,15 @@ function Navigation() {
     <div>
 		<nav className={style.nav}>
 			<div className={style.logo__routename}>  
-				<img src={logo} alt="logo" />
+				<img  src={logo} alt="logo" />
 				<span>|</span>
 				<p>{location.pathname.split("/").splice(2,1)}</p>
+			</div>
+			<div className={style.search}>
+				<form onSubmit={(e)=>goToSearchPage(e)} action="">
+					<input onChange={(e)=>setSearchParams({search_query : e.target.value})} placeholder='Search' type="text" />
+					<button>Search</button>
+				</form>
 			</div>
 			<div className={style.ul__wrap}>
 				<ul className={style.ul1}>
@@ -45,9 +65,9 @@ function Navigation() {
 					<li onClick={goToChannels} >My channel</li>
 				</ul>	
 				<ul className={style.ul2}>
-					<li>
+					{/* <li>
 						<img src={search} alt="" />
-					</li>
+					</li> */}
 					<li className={style.center}>
 						<img src={alarm} alt="" />
 					</li>

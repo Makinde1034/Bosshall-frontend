@@ -10,6 +10,7 @@ import RandonVideo from '../../components/randomVideo/randomVideo';
 import RandomChannel from '../../components/randomChannel/randomChannel';
 
 
+
 function Home() {
 
     useEffect(()=>{
@@ -52,10 +53,11 @@ function Home() {
 
 
 
+
     return (
         <div>
             <div className={style.home}>
-                <p className={style.rand}>Random videos</p>
+                <p className={style.rand}  >Random videos</p>
                 <div className={style.random__videos}>
                     {
                         videos.map((item,index) =>(

@@ -10,6 +10,7 @@ import { setRelatedVideos } from '../../store/relatedVideos'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Comment from '../../components/comment/comments'
 import RelatedVideos from '../../components/relatedVideos/relatedVideos'
+import { Link } from 'react-router-dom'
 
 
 
@@ -17,6 +18,11 @@ import RelatedVideos from '../../components/relatedVideos/relatedVideos'
 function Video() {
 
     const [activeComment, setActiveComment] = React.useState("")
+    const token = useAppSelector((state)=>state.userSlice.token);
+
+    const canReply = Boolean(token); 
+
+    console.log(canReply)
 
     const [ videoData, setVideoData ] = useState({      
         url : "",
@@ -122,7 +128,12 @@ function Video() {
                     <button>Subscribe</button>
                 </div>
                 <div className={style.create__comment}>
-                   <CreateComment id = {id} /> 
+                   { canReply 
+                    ? 
+                    <CreateComment id = {id} />
+                    : 
+                    <div className={style.cant__comment} > <Link to="/">Sign up</Link> or <Link to="/">sign in</Link> to leave a comment</div>
+                    }
                 </div>
                 <div className={style.comment}>
                     {

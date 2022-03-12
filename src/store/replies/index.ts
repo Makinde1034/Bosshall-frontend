@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { reply } from '../../types'
 
 interface initialStateProps  {
-    replies : reply[]
+    replies : reply[],
+    loading : boolean
 }
 
 const initialState : initialStateProps = {
-    replies : []
+    replies : [],
+    loading : false
 }
 
 const replySlice = createSlice({
@@ -15,10 +17,13 @@ const replySlice = createSlice({
     reducers : {
         setCommentReplies(state,action:PayloadAction<reply[]>){
             state.replies = action.payload
+        },
+        setCommentRepliesLoading(state,action : PayloadAction<boolean>){
+            state.loading = action.payload
         }
     }
 
 })
 
-export const { setCommentReplies } = replySlice.actions
+export const { setCommentReplies, setCommentRepliesLoading } = replySlice.actions
 export default replySlice.reducer

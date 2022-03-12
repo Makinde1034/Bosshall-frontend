@@ -7,7 +7,7 @@ import ArrowUpward from '../../assets/img/upward-arrow.png'
 import CreateReply from '../createReply/createReply'
 import commentApi from '../../api/coments'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { setCommentReplies } from '../../store/replies'
+import { setCommentReplies, setCommentRepliesLoading  } from '../../store/replies'
 import Reply from '../reply/reply'
 // import { useSelector } from 'react-redux'
 
@@ -30,6 +30,7 @@ function Comments({comment, commentorImage, time, commentorName, activeComment, 
   const dispatch = useAppDispatch();
   const replies = useAppSelector((state)=>state.replyReducer.replies);
   const isReplying = activeComment && activeComment === commentId
+  const repliesLoading = useAppSelector((state)=>state.replyReducer.loading)
 
   
 
@@ -38,8 +39,11 @@ function Comments({comment, commentorImage, time, commentorName, activeComment, 
     setActiveComment(commentId )
     try{
       // dispatch( setCommentReplies([]) )
+      dispatch(setCommentRepliesLoading(true))
+
       const res= await commentApi.getCommentReplies(commentId);
       dispatch( setCommentReplies(res.data.data) );
+      dispatch(setCommentRepliesLoading(false))
       console.log(res)
 
     }catch(err){
@@ -70,7 +74,8 @@ function Comments({comment, commentorImage, time, commentorName, activeComment, 
           
          
         }
-        {
+        { 
+          isReplying && repliesLoading ? (<p>loading reply...</p>) : 
           replies.map((item,index)=>(
             isReplying && replies.length > 0 &&
             <Reply 

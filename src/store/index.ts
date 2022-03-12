@@ -8,6 +8,7 @@ import commentReducer from './comments/'
 import RelatedVideosReducer from './relatedVideos'
 import authReducer from './auth'
 import replyReducer from './replies'
+import searchReducer from './search'
 
 
 const store = configureStore({
@@ -21,7 +22,8 @@ const store = configureStore({
         commentReducer,
         RelatedVideosReducer,
         authReducer,
-        replyReducer
+        replyReducer,
+        searchReducer
     }
 })
 

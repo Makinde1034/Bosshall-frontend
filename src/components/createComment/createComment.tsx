@@ -4,6 +4,7 @@ import img from '../../assets/img/Avatar.png'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { setVideoComments } from '../../store/comments'
 import commentApi from '../../api/coments'
+import { toast } from 'react-toastify'
 
 
 interface createCommentProps {
@@ -28,7 +29,7 @@ function CreateComment({ id }:createCommentProps) {
     }
 
     const res = await commentApi.createComment(data);
-
+    toast.success("Your feed back hs been submitted")
     // get all video comment after comment haas been added
     const videoComments = await getVideoComments();
     console.log(res);
