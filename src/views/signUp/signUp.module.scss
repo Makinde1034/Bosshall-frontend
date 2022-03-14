@@ -79,7 +79,7 @@ $primary : #EF5350;
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:481px) {
 	.signup{
         
         p{
@@ -87,6 +87,16 @@ $primary : #EF5350;
         }
         .form{
             width: 100%;
+            
+        }
+    }
+}
+
+@media screen and (min-width : 481px) and (max-width:768px) {
+	.signup{
+        
+        .form{
+            width: 50%;
             
         }
     }

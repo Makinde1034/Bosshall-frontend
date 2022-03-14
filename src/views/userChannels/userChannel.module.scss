@@ -47,3 +47,16 @@
     }
 }
 
+@media screen and (max-width:481px) {
+    .userchannel__wrap{
+
+        .userchannel{
+            grid-template-columns:  1fr;
+            padding: 20px 20px 0px 20px;
+
+            .box{
+                border-radius: 0px;
+            }
+        }
+    }
+}

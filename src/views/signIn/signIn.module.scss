@@ -58,8 +58,16 @@ $primary : #EF5350;
             color: white;
             height: 50px;
             font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border-radius: 3px;
             cursor: pointer;
+
+            p{
+                color: white;
+                font-weight: 600;
+            }
             
             
         }
@@ -77,11 +85,21 @@ $primary : #EF5350;
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:481px) {
 	.signup{
         
         .form{
             width: 100%;
+            
+        }
+    }
+}
+
+@media screen and (min-width : 481px) and (max-width:768px) {
+	.signup{
+        
+        .form{
+            width: 50%;
             
         }
     }

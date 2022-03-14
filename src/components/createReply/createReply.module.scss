@@ -61,3 +61,19 @@ $primary__background : #EF5350;
     
 
 }
+
+@media screen and (max-width : 481px) {
+    
+    .reply{
+
+        .reply__inside{
+
+            form{
+                
+                textarea{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

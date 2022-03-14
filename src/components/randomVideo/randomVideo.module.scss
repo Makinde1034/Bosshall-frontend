@@ -61,3 +61,10 @@
     opacity: 1;
 }
 
+@media screen and (max-width : 768px) {
+    .randomVideo{
+        video{
+            border-radius: 0px;
+        }
+    }
+}

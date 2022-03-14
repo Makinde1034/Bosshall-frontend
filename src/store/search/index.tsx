@@ -1,6 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import type { video } from '../../types'
 
-const initialState = {
+interface searchProps {
+    videos : video[],
+    loading : boolean
+}
+
+const initialState : searchProps = {
     videos : [],
     loading : false
 }

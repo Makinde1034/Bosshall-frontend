@@ -1,0 +1,109 @@
+.sideNav{
+    height:  100vh;
+    width: 50%;
+    background-color: white;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    // color:  white;
+    padding-left: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display : none;
+    // visibility: hidden;
+    transform:translateX(100%);
+    transition: 0.3s ease;
+
+    nav{
+
+
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 60px;
+        padding-right: 20px;
+
+        img{
+            height: 20px;
+            width: 20px;
+        }
+    }
+
+    ul{
+        list-style: none;
+        position: relative;
+        
+
+        li{
+            display: flex;
+            margin-bottom: 30px;
+            align-items: center;
+
+            img{
+                height: 20px;
+                margin-right: 20px;
+            }
+
+            p{
+                font-weight: 600;
+                font-size: 14px;
+            }
+        }
+
+        .list1{
+            transform: translateX(50px);
+            transition: 0.4s ease;
+            opacity: 0;
+        }
+        .list1__active{
+            transform: translateX(0px);
+            opacity: 1;
+            
+        }
+        .list2{
+            transform: translateX(50px);
+            transition: 0.6s ease;
+            opacity: 0;
+           
+        }
+         .list2__active{
+            transform: translateX(0px);
+            opacity: 1;
+        }
+        .list3{
+            transform: translateX(50px);
+            transition: .8s ease;
+            opacity: 0;
+        }
+         .list3__active{
+            transform: translateX(0px);
+            opacity: 1;
+        }
+        .list4{
+            transform: translateX(50px);
+            transition: 1s ease;
+            opacity: 0;
+        }
+        .list4__active{
+            transform: translateX(0px);
+            opacity: 1;
+        }
+
+        .logout{
+            margin-top: 500px;
+        }
+
+    }
+
+}
+
+.sideNav__active{
+    // visibility: visible;
+    transform:translateX(0%);
+ 
+}
+
+@media screen and (max-width : 481px) {
+    .sideNav{
+        display:  block;
+    }
+}

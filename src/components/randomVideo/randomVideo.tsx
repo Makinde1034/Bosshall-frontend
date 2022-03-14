@@ -10,9 +10,10 @@ interface randomVid {
   title : string,
   channelImage : string,
   id : string
+  views : number
 }
 
-function RandonVideos({url,title, channelImage, id} : randomVid) {
+function RandonVideos({url,title, channelImage, id, views} : randomVid) {
 
   const navigate = useNavigate();
 
@@ -27,7 +28,7 @@ function RandonVideos({url,title, channelImage, id} : randomVid) {
         <img src={channelImage} alt="" />
         <div className={style.details__text}>
           <p className={style.title}>{title}</p>
-          <p className={style.views}>200 views</p>
+          <p className={style.views}>{views} views</p>
         </div>
       </div>
       <img className={style.play} src={play} alt="" />

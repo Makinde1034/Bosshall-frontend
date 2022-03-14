@@ -32,5 +32,26 @@ export default {
             url : `${BASE_URL}/api/get-random-channels`,
             method : "GET"
         })
+    },
+    createSubscription(data : any){
+        return axios({
+            url : `${BASE_URL}/api/subscribe`,
+            method : "POST",
+            data : data,
+            headers : {
+                "x-access-token" : localStorage.getItem("token")
+            }
+
+        })
+    },
+    checkSubscription(data : any ){
+        return axios({
+            url : `${BASE_URL}/api/check-subscription`,
+            method : "POST",
+            data : data,
+            headers : {
+                "x-access-token" : localStorage.getItem("token")
+            },
+        })
     }
 }

@@ -10,7 +10,9 @@ import { setRelatedVideos } from '../../store/relatedVideos'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import Comment from '../../components/comment/comments'
 import RelatedVideos from '../../components/relatedVideos/relatedVideos'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import channelApi from '../../api/channel'
+
 
 
 
@@ -18,11 +20,13 @@ import { Link } from 'react-router-dom'
 function Video() {
 
     const [activeComment, setActiveComment] = React.useState("")
+    const [ isUserSubscribed, setIsUserSubscribed ] = React.useState(null)
     const token = useAppSelector((state)=>state.userSlice.token);
+    const navigate = useNavigate()
 
     const canReply = Boolean(token); 
 
-    console.log(canReply)
+    // console.log(canReply)
 
     const [ videoData, setVideoData ] = useState({      
         url : "",
@@ -41,8 +45,10 @@ function Video() {
     
 
     useEffect(()=>{
-        Promise.all([getVideo(), getVideoComments(),]);  
+        Promise.all([getVideo(), getVideoComments()]);  
     },[id])
+
+    
 
     const getVideo = async () =>{
 
@@ -58,6 +64,9 @@ function Video() {
                 likes : res.data.vid.likes
             });
             loadRelatedVideos( res.data.vid.channelId)
+
+            // check if user is subscribed to channel
+            isSubscibed(res.data.vid.channelId)
             
 
 
@@ -86,6 +95,7 @@ function Video() {
 
     // get related videos
     const loadRelatedVideos = async (channelId : string) =>{
+
         try{
             
 
@@ -103,6 +113,46 @@ function Video() {
             console.log(err)
         }
         
+    }
+
+    // createSubscription
+
+    const subscribe = async ( ) => {
+
+        if(!canReply){
+            return navigate("")
+        }
+
+        try{
+
+            const data = {
+                channelId : videoData.channelId
+            }
+            const res = await channelApi.createSubscription(data)
+
+            isSubscibed(videoData.channelId)
+            console.log(res)
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    // check user subscription
+    const isSubscibed  = async (id : string) => {
+
+        try{
+            const data = {
+                channelId : id
+            }
+            const res = await channelApi.checkSubscription(data);
+            setIsUserSubscribed(res.data.data)
+
+            console.log(res, "check subscription")
+
+        }catch(err){
+            console.log(err)
+        }
+       
     }
     
 
@@ -125,7 +175,7 @@ function Video() {
                         <img src={videoData.channelImage} alt="" />
                         <p>Channel Name</p>
                     </div>
-                    <button>Subscribe</button>
+                    <button onClick={()=>subscribe()} > { isUserSubscribed ? "Unsubscribe" : "Subscribe" }</button>
                 </div>
                 <div className={style.create__comment}>
                    { canReply 

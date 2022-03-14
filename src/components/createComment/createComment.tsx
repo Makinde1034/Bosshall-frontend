@@ -20,6 +20,8 @@ function CreateComment({ id }:createCommentProps) {
   const dispatch = useAppDispatch();
   const userImg = useAppSelector((state)=> state.userSlice.userImg)
 
+  const disabled = Boolean(comment.length < 0 )
+
 
   const createComment = async (e:any) =>{
     e.preventDefault()
@@ -29,7 +31,8 @@ function CreateComment({ id }:createCommentProps) {
     }
 
     const res = await commentApi.createComment(data);
-    toast.success("Your feed back hs been submitted")
+    toast.success("Your feed back has been submitted")
+    setComment("")
     // get all video comment after comment haas been added
     const videoComments = await getVideoComments();
     console.log(res);
@@ -62,8 +65,8 @@ function CreateComment({ id }:createCommentProps) {
     <div className={style.comment}>
       <img src={userImg} alt="" />
       <form onSubmit={(e)=>createComment(e)} action="">
-        <textarea onChange={(e)=>setComment(e.target.value)} name="" id="" ></textarea>
-        <button>Add comment</button>
+        <textarea required onChange={(e)=>setComment(e.target.value)} name="" id="" ></textarea>
+        <button disabled={disabled} >Add comment</button>
       </form>
       
     </div>

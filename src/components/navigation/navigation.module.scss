@@ -110,12 +110,34 @@
 
 @media screen and (max-width:768px) {
 	.nav{
+
+        .logo__routename{
+
+            img{
+                height: 20px;
+                width: 20px;
+            }
+
+            p{
+                display: none;
+            }
+        }
         .ul__wrap{
             display: none;
         }
 
         .search{
             display: none;
+            form{
+
+                input{
+                    width: 100px;
+                }
+            }
+        }
+
+        .menu{
+            display: block;
         }
     }
 }

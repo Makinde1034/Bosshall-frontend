@@ -3,11 +3,12 @@ import style from './signIn.module.scss'
 import message from '../../assets/img/mail.png'
 import api from '../../api/auth'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
-import { setUser,setError,authRequest,authFailure, } from '../../store/user';
+import { setUser,setError,authRequest,authFailure } from '../../store/user';
 import { setAuth } from '../../store/auth';
 import { saveToken,saveUserImage,saveUserId } from '../../helpers/storage';
 import Preloader from '../../components/prealoder/preloader';
 import { useNavigate } from 'react-router-dom'
+// import Preloader from '../../components/prealoder/preloader';
 
 
 
@@ -27,7 +28,7 @@ function SignIn() {
 	const login = async (e:any) =>{
 		e.preventDefault()
 		const data = { email,password }
-		
+		dispatch( authRequest(true) )
 
 		try{
 			const response = await api.login(data)
@@ -67,7 +68,11 @@ function SignIn() {
 			<div className={style.inputWrap}>
 				<input onChange={(e)=>setPassword(e.target.value)} placeholder='*******' required  type="password" />
 			</div>
-			{ <button disabled={ disabled }>Sign in</button> }
+			<button disabled={ disabled }>
+				{ 
+					loading ? <Preloader /> : <p>Sign in</p>
+				}
+			</button> 
 		
 		</form>
 		<p className={style.errorMsg}>{errorMsg}</p>

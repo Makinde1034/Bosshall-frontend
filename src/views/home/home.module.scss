@@ -39,3 +39,47 @@
         border-radius: 5px;
     }
 }
+
+@media screen and (max-width : 481px) {
+
+    .home{
+
+        padding: 0px 20px 0px 20px;
+        
+        .random__videos{
+            grid-template-columns: 1fr;
+            background-color: white;
+            column-gap: 0px;
+            row-gap: 30px;
+            padding: 0px;
+        }
+        .random__channels{
+            grid-template-columns: 1fr;
+            background-color: white;
+            column-gap: 0px;
+            row-gap: 30px;
+            padding: 0px;
+        }
+    }
+}
+
+@media screen and (min-width : 481px) and (max-width : 768px) {
+
+    .home{
+        padding: 0px 20px 0px 20px;
+        .random__videos{
+            grid-template-columns: 1fr 1fr;
+            background-color: white;
+            column-gap: 30px;
+            row-gap: 30px;
+            padding: 0px;
+        }
+        .random__channels{
+            grid-template-columns: 1fr 1fr;
+            background-color: white;
+            column-gap: 30px;
+            row-gap: 30px;
+            padding: 0px;
+        }
+    }
+}

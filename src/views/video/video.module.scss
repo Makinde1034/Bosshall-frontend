@@ -64,11 +64,15 @@
             }
             
         }
+
+        .comment{
+            padding-top: 20px;
+        }
     }
     .video__right{
         width: 30%;
         padding-left: 20px;
-        
+
         h2{
             font-family: 'Work Sans', sans-serif;
         }
@@ -85,7 +89,11 @@
 
 
             .video__channel{
-                padding: 0px 20px 0px 20px;
+                padding: 0px 20px 20px 20px;
+            }
+
+            .create__comment{
+                padding: 0px 20px 20px 20px;
             }
             
         }

@@ -62,11 +62,12 @@ function Home() {
                     {
                         videos.map((item,index) =>(
                            <div>
-                               <RandonVideo url={item.url} title={item.title} channelImage={item.channelImage} id = {item._id}  />
+                               <RandonVideo views = {item.views} url={item.url} title={item.title} channelImage={item.channelImage} id = {item._id}  />
                            </div>
                         ))
                     }
                 </div>
+                {/* <p className={style.rand}  >Random Channels</p> */}
                 <div className={style.random__channels}>
                     {
                         randomChannels.map((item,index)=>(

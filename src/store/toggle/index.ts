@@ -1,7 +1,8 @@
 import { createSlice,PayloadAction } from '@reduxjs/toolkit'
 
 const initialState = {
-    uploadModal : false
+    uploadModal : false,
+    sideNavActive : false
 }
 
 const toggleSlice = createSlice({
@@ -10,11 +11,15 @@ const toggleSlice = createSlice({
     reducers : {
         setUploadModal(state,action:PayloadAction<boolean>){
             state.uploadModal = action.payload
+        },
+
+        toggleSideNav(state,action:PayloadAction<boolean>){
+            state.sideNavActive = action.payload
         }
     }
 })
 
-export const { setUploadModal } = toggleSlice.actions
+export const { setUploadModal, toggleSideNav } = toggleSlice.actions
 
 export default toggleSlice.reducer
 

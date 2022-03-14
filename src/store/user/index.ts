@@ -22,6 +22,7 @@ const userSlice = createSlice({
             state.token = action.payload.token
             state._id = action.payload._id
             saveUserImage(action.payload.userImg)
+            state.loading = false
         },
         setUserId(state,action:PayloadAction<string>){ //temporary
             state._id = action.payload
@@ -34,6 +35,9 @@ const userSlice = createSlice({
             state.loading = action.payload
         },
         authFailure(state,action:PayloadAction<boolean>){
+            state.loading = action.payload
+        },
+        authSuccess(state, action:PayloadAction<boolean>){
             state.loading = action.payload
         },
 
@@ -51,6 +55,15 @@ const userSlice = createSlice({
     }
 })
 
-export const { setUser,setError,authRequest,authFailure,updateProfileRequest,updateProfileFailure,updateProfileSuccess, setUserId } = userSlice.actions
+export const { setUser,
+    setError,
+    authRequest,
+    authFailure,
+    authSuccess,
+    updateProfileRequest,
+    updateProfileFailure,
+    updateProfileSuccess, 
+    setUserId 
+} = userSlice.actions
 
 export default userSlice.reducer

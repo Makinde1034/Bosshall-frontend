@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { createSearchParams } from "react-router-dom";
 import videoApi from '../../api/video'
+import { toggleSideNav } from '../../store/toggle'
 
 
 
@@ -22,7 +23,8 @@ function Navigation() {
 	const id = useAppSelector((state)=>state.userSlice._id)
 	const userImage = useAppSelector((state)=>state.userSlice.userImg)
 	const navigate = useNavigate()
-	const location = useLocation()
+	const location = useLocation();
+	const dispatch = useAppDispatch()
 
 	const [ searchParam, setSearchParams ] = useState({search_query : ""})
 	
@@ -60,7 +62,7 @@ function Navigation() {
 			</div>
 			<div className={style.ul__wrap}>
 				<ul className={style.ul1}>
-					<Link to={"home"} >Home</Link>
+					<Link to={""} >Home</Link>
 					<li>Profile</li>
 					<li onClick={goToChannels} >My channel</li>
 				</ul>	
@@ -76,7 +78,7 @@ function Navigation() {
 					</li>
 				</ul>
 			</div>
-			<div className={style.menu}>
+			<div onClick={()=>dispatch( toggleSideNav(true) )} className={style.menu}>
 				<img src={more} alt="" />
 			</div>
 		</nav>
