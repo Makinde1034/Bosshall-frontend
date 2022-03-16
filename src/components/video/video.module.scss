@@ -23,6 +23,10 @@
             font-size: 14px;
             margin-top: 5px;
         }
+
+        img{
+            height: 16px;
+        }
         
     }
 }
@@ -31,8 +35,12 @@
     .video{
         flex-direction: column;
 
-        .video__left{
-            width: 100%;
-        }
+        .video__details{
+
+            p{
+                width: 50%;
+                line-height: 20px;
+            }
+       }
     }
 }

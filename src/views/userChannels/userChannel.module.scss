@@ -12,7 +12,7 @@
             background: white;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             padding: 20px;
-            border-radius: 15px;
+            // border-radius: 15px;
             cursor: pointer;
 
             img{
@@ -51,7 +51,38 @@
     .userchannel__wrap{
 
         .userchannel{
+
             grid-template-columns:  1fr;
+            padding: 20px 20px 0px 20px;
+
+            .box{
+                border-radius: 0px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:481px) and (max-width:768px) {
+    .userchannel__wrap{
+
+        .userchannel{
+
+            grid-template-columns: 1fr 1fr;
+             padding: 20px 20px 0px 20px;
+
+            .box{
+                border-radius: 0px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px) {
+    .userchannel__wrap{
+
+        .userchannel{
+
+            grid-template-columns: 1fr 1fr 1fr;
             padding: 20px 20px 0px 20px;
 
             .box{

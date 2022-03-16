@@ -40,6 +40,11 @@ const userSlice = createSlice({
         authSuccess(state, action:PayloadAction<boolean>){
             state.loading = action.payload
         },
+        logout(state, action:PayloadAction<null>){
+            state.token = ""
+            state.userImg =""
+            localStorage.clear()
+        },
 
         // update user profile
         updateProfileRequest(state,action:PayloadAction<boolean>){
@@ -63,7 +68,8 @@ export const { setUser,
     updateProfileRequest,
     updateProfileFailure,
     updateProfileSuccess, 
-    setUserId 
+    setUserId ,
+    logout
 } = userSlice.actions
 
 export default userSlice.reducer

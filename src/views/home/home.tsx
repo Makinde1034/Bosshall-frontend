@@ -8,26 +8,31 @@ import { setRandomVideos } from '../../store/randomVideos'
 import { setRandomChannels } from '../../store/randomChannels';
 import RandonVideo from '../../components/randomVideo/randomVideo';
 import RandomChannel from '../../components/randomChannel/randomChannel';
+import { isAuthenticated } from '../../helpers/authentication'
+import { setAuth } from '../../store/auth';
+
 
 
 
 function Home() {
 
     useEffect(()=>{
-        getRandomVideos();
-        getRanadomChannels();
+        
+        Promise.all([getRandomVideos(), getRanadomChannels(), checkAuth()])
     },[])
 
     const dispatch = useAppDispatch();
     // select random channels and videos
     const videos = useAppSelector((state)=>state.randomVideos.randomVideos);
     const randomChannels = useAppSelector((state)=>state.randomChannels.randomChannels);
+    
 
 
     // get random videos
     const getRandomVideos = async () => {
 
         try{
+
             const randomVideos = await videoApi.getRandomVideos();
             console.log(randomVideos)
             dispatch(setRandomVideos( randomVideos.data.videos) )
@@ -51,7 +56,20 @@ function Home() {
         }
     }
 
+    // check auth 
 
+    const checkAuth = async () => {
+
+        try{
+            const res = await isAuthenticated()
+            console.log(res, "checkauthhh")
+            dispatch( setAuth(res.data.auth) )
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+ 
 
 
     return (
@@ -61,9 +79,9 @@ function Home() {
                 <div className={style.random__videos}>
                     {
                         videos.map((item,index) =>(
-                           <div>
-                               <RandonVideo views = {item.views} url={item.url} title={item.title} channelImage={item.channelImage} id = {item._id}  />
-                           </div>
+                            <div>
+                                <RandonVideo views = {item.views} url={item.url} title={item.title} channelImage={item.channelImage} id = {item._id}  />
+                            </div>
                         ))
                     }
                 </div>

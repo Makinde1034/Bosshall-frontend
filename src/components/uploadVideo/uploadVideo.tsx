@@ -30,7 +30,7 @@ function UploadVideo() {
 		console.log(file.size/1000000, "this is the file");
 
 		// ensure file size is not greater than 10mb
-		if(file.size/1000000 > 10 ){
+		if(file.size/1000000 > 30 ){
 			return alert("file too large");
 		}
 
@@ -106,7 +106,7 @@ function UploadVideo() {
 				</div>
 				<div className={style.buttons}>
 					<button onClick={(e)=>closeModal(e)}  className={style.cancel}>Cancel</button>
-					{ videoUploadInProgress ? <Preloader />  : <button className={style.upload__btn} >Upload</button>}
+					<button className={style.upload__btn} >{videoUploadInProgress ? "uploading..." : "upload" }</button>
 				</div>
 			</form>
 			

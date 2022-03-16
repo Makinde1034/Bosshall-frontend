@@ -26,3 +26,7 @@ export const timeSince = (date) => {
     }
     return Math.floor(seconds) + " seconds";
 }
+
+export const getDate = (date) => {
+    return new Date(date).toDateString();
+}

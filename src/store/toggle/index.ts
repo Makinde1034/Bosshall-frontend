@@ -2,7 +2,8 @@ import { createSlice,PayloadAction } from '@reduxjs/toolkit'
 
 const initialState = {
     uploadModal : false,
-    sideNavActive : false
+    sideNavActive : false,
+    searchNav : false
 }
 
 const toggleSlice = createSlice({
@@ -15,11 +16,14 @@ const toggleSlice = createSlice({
 
         toggleSideNav(state,action:PayloadAction<boolean>){
             state.sideNavActive = action.payload
+        },
+        toggleSearchNav(state,action:PayloadAction<boolean>){
+            state.searchNav = action.payload
         }
     }
 })
 
-export const { setUploadModal, toggleSideNav } = toggleSlice.actions
+export const { setUploadModal, toggleSideNav, toggleSearchNav } = toggleSlice.actions
 
 export default toggleSlice.reducer
 

@@ -30,7 +30,7 @@
                 margin-right: 10px;
                 video{
                     height: 100%;
-                    width: 100%;
+                    width: 250px;
                     object-fit: cover;
                 }
 
@@ -55,5 +55,27 @@
             
         }
         
+    }
+}
+
+@media screen and (max-width : 768px) {
+
+    .search{
+        padding: 0px 20px 0px 20px;
+
+        .search__videos{
+
+            .wrap{
+
+                .video{
+                    width: 150px;
+                    height: 100px;
+
+                    video{
+                        width: 150px;
+                    }
+                }
+            }
+        }
     }
 }

@@ -21,6 +21,7 @@ const MyChannel = React.lazy(()=>import("./views/userChannels/userChannels"))
 const Home = React.lazy(()=>import("./views/home/home"))
 const Video = React.lazy(()=>import("./views/video/video"))
 const SearchPage = React.lazy(()=>import("./views/searchPage"))
+const Notifications = React.lazy(()=>import("./views/notifications/notifications"))
 
 function App() {
 
@@ -47,7 +48,7 @@ function App() {
           element : <SearchPage />
         },
         { 
-          path: 'profil-setup', 
+          path: 'profile-setup', 
           element: isAuth  ? <ProfileSetup /> : <Navigate to="/" /> 
         
         },
@@ -74,6 +75,10 @@ function App() {
         {
           path : "video/:id",
           element :  <Video /> 
+        },
+        {
+          path : "notifications",
+          element : isAuth ?   <Notifications /> : <Navigate to="/" />
         }
       ]
     },

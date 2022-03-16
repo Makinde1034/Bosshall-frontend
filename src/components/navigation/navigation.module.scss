@@ -22,9 +22,14 @@
             margin-left: 20px;
             color: #E6E7E9;
         }
+        p{
+            width : 100px;
+            // background-color: blue;
+        }
     }
 
     .search{
+
         form{
             display: flex;
             align-items: center;
@@ -70,13 +75,16 @@
                 font-weight: 500;
                 font-size: 12px;
                 cursor: pointer;
-                text-decoration: none
+                text-decoration: none;
+                color:black;
             }
         }
         .ul2{
+
             @include alignCenter();
             justify-content: flex-end;
             list-style: none;
+
             li{
                 // margin-right: 20px;
                 cursor: pointer;
@@ -84,12 +92,38 @@
                     height: 15px;
                 }
                 .userImage{
+
                     height: 30px;
                     width: 30px;
                     border-radius: 100%;
                 }
             }
+            .userImg{
+
+                position: relative;
+
+                .logout{
+                    width: 100px;
+                    height: 50px;
+                    border: 1px solid #9d9898;
+                    position: absolute;
+                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                    border-radius: 3px;
+                    left: -80px;
+                    padding:5px;
+
+                    p{
+                        font-size: 12px;
+                        font-weight: 600;
+                        // border-bottom: 1px solid #9d9898;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                
+            }
             .center{
+
                 margin-right: 20px;
                 margin-left: 20px;
                 color: #EF5350;
@@ -103,12 +137,18 @@
             height: 20px;
         }
         display: none;
+
+        .searchImg{
+
+            margin-right: 20px;
+        }
     }
 
     
 }
 
 @media screen and (max-width:768px) {
+
 	.nav{
 
         .logo__routename{
@@ -118,7 +158,7 @@
                 width: 20px;
             }
 
-            p{
+            p{                                           
                 display: none;
             }
         }
@@ -127,7 +167,9 @@
         }
 
         .search{
+
             display: none;
+
             form{
 
                 input{

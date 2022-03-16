@@ -1,16 +1,11 @@
 import api from '../api/auth'
 
 
-export const isAuthenticated = () =>{
+export const isAuthenticated = async () =>{
 
-    // const token = localStorage.getItem("token");
+    const res = await api.verifyAccess();
 
-    // if(!token){
-    //     return false
-    // }else{
-    //     return true
-    // }
-    return true
+    return res
 
     
 }

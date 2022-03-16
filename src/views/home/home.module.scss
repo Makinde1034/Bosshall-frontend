@@ -2,6 +2,7 @@
 
 
 .home{
+
     min-height: 90vh;
     padding-right: 100px;
     padding-left: 100px;
@@ -14,8 +15,9 @@
     }
     
     .random__videos{
+
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 30px;
         margin-top: 10px;
         background: #F9F9F9;
@@ -45,6 +47,11 @@
     .home{
 
         padding: 0px 20px 0px 20px;
+
+        .rand{
+
+            display: none;
+        }
         
         .random__videos{
             grid-template-columns: 1fr;
@@ -67,7 +74,10 @@
 
     .home{
         padding: 0px 20px 0px 20px;
+
+        
         .random__videos{
+
             grid-template-columns: 1fr 1fr;
             background-color: white;
             column-gap: 30px;
@@ -75,7 +85,25 @@
             padding: 0px;
         }
         .random__channels{
+
             grid-template-columns: 1fr 1fr;
+            background-color: white;
+            column-gap: 30px;
+            row-gap: 30px;
+            padding: 0px;
+        }
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1034px) {
+
+    .home{
+
+        padding: 0px 20px 0px 20px;
+
+        .random__videos{
+
+            grid-template-columns: 1fr 1fr 1fr;
             background-color: white;
             column-gap: 30px;
             row-gap: 30px;

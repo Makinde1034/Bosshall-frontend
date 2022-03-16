@@ -123,3 +123,10 @@
     transform:scale(1) translate(-50%,-50%);
    
 }
+
+@media screen and (max-width:481px) {
+
+    .upload{
+        width:  90%;
+    }
+}

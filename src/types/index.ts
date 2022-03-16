@@ -27,6 +27,8 @@ export interface channel {
     _id : string,
     name : string,
     image : string 
+    subscribers : number
+
     
 }
 

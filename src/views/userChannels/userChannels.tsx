@@ -5,6 +5,7 @@ import api from '../../api/channel'
 import { useParams,useNavigate } from 'react-router-dom'
 import { useAppSelector,useAppDispatch } from '../../store/hooks'  
 import image from '../../assets/img/bacimage.jpg'
+import NoChannelYet from '../channel/channel'
 
 function UserChannel() {
 
@@ -39,18 +40,22 @@ function UserChannel() {
 
     return (
     <div className={style.userchannel__wrap}>
-        <div className={style.userchannel}> 
-            {   channels.length === 0 ? (<div>You have not created a channel</div>) :
-                channels.map((item,index)=>(
-                    <div onClick={()=>goToChannel(item._id)} className={style.box}>
-                        <img src={item.image} alt="" />
-                        <h3 className={style.title}>{item.name}</h3>
-                        <p className={style.sub}>12.3k subscribers</p>
-                        <button>Delete</button>
-                    </div>
-                ))
-            }
-        </div>
+        {   
+            channels.length === 0 ? 
+            <NoChannelYet /> : 
+            <div className={style.userchannel}> 
+                {  
+                    channels.map((item,index)=>(
+                        <div onClick={()=>goToChannel(item._id)} className={style.box}>
+                            <img src={item.image} alt="" />
+                            <h3 className={style.title}>{item.name}</h3>
+                            <p className={style.sub}>12.3k subscribers</p>
+                            <button>Delete</button>
+                        </div>
+                    ))
+                }
+            </div>
+        }
     </div>
     
   )

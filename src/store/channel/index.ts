@@ -10,7 +10,8 @@ interface channel{
     image : string,
     owner : string,
     _id : string,
-    videos :video[]
+    videos :video[],
+    subscribers : number
 }
 interface channelProps{
     createChannelLoading : boolean,
@@ -26,7 +27,8 @@ const initialState : channelProps = {
         image : "",
         owner : "",
         _id : "",
-        videos : []
+        videos : [],
+        subscribers : 0
     },
     channels : []
 }

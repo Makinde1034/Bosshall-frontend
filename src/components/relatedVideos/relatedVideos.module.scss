@@ -7,24 +7,26 @@
 
     .video{
         height: 100px;
-        width: 200px;
         // border-radius: 50%;
         background-color: black;
         margin-right: 10px;
         margin-bottom: 5px;
+        width: 200px;
         cursor: pointer;
 
         video{
-            width: 100%;
+            width: 200px;
             height: 100%;
-            object-fit: cover;
+            object-fit:cover;
         }
     }
+
     .video__title{
         font-weight: 500;
         // margin-bottom: 5px;
-        font-family: 'Work Sans', sans-serif;
+        font-family: 'Work Sans', sans-serif;           
     }
+
     .video__date,.video__channel{
         font-size: 12px;
         margin-bottom: 5px;
@@ -32,10 +34,15 @@
 }
 
 @media screen and (max-width:768px) {
+
     .related{
         .video{
             width: 120px;
             height: 80px;
+            
+            video{
+                width: 120px;
+            }
         }
     }
 }

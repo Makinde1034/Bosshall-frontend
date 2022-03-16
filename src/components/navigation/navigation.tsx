@@ -12,7 +12,9 @@ import { useNavigate } from 'react-router-dom'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { createSearchParams } from "react-router-dom";
 import videoApi from '../../api/video'
-import { toggleSideNav } from '../../store/toggle'
+import { toggleSideNav, toggleSearchNav } from '../../store/toggle'
+import { logout } from '../../store/user';
+
 
 
 
@@ -22,12 +24,18 @@ function Navigation() {
 
 	const id = useAppSelector((state)=>state.userSlice._id)
 	const userImage = useAppSelector((state)=>state.userSlice.userImg)
+	const isAuth = useAppSelector((state)=>state.authReducer.isAuth)
+	
+
 	const navigate = useNavigate()
 	const location = useLocation();
 	const dispatch = useAppDispatch()
-
-	const [ searchParam, setSearchParams ] = useState({search_query : ""})
 	
+
+	const [ searchParam, setSearchParams ] = useState({search_query : ""});
+	const [ options, setOptions ] = useState(false)
+
+	const isDisabled = searchParam.search_query.length === 0
 
 	const goToChannels = () =>{
 		navigate(`/dashboard/my-channel/${id}`)
@@ -43,6 +51,14 @@ function Navigation() {
 
 		
     }
+
+	const logUserOut = () =>{
+
+		navigate("")
+		dispatch( logout(null) )
+	}
+
+
 	
 
 	
@@ -50,36 +66,40 @@ function Navigation() {
     <div>
 		<nav className={style.nav}>
 			<div className={style.logo__routename}>  
-				<img  src={logo} alt="logo" />
+				<img onClick={()=>navigate("")}  src={logo} alt="logo" />
 				<span>|</span>
 				<p>{location.pathname.split("/").splice(2,1)}</p>
 			</div>
 			<div className={style.search}>
 				<form onSubmit={(e)=>goToSearchPage(e)} action="">
-					<input onChange={(e)=>setSearchParams({search_query : e.target.value})} placeholder='Search' type="text" />
-					<button>Search</button>
+					<input  onChange={(e)=>setSearchParams({search_query : e.target.value})} placeholder='Search hank, walter, birdie' type="text" />
+					<button disabled={isDisabled} >Search</button>
 				</form>
 			</div>
 			<div className={style.ul__wrap}>
 				<ul className={style.ul1}>
 					<Link to={""} >Home</Link>
-					<li>Profile</li>
-					<li onClick={goToChannels} >My channel</li>
+					{ !isAuth && <li> Sign up</li>}
+					{ isAuth && <li onClick={goToChannels} >My channels</li>}
 				</ul>	
 				<ul className={style.ul2}>
-					{/* <li>
-						<img src={search} alt="" />
-					</li> */}
-					<li className={style.center}>
+					<li onClick = { ()=> navigate('/dashboard/notifications')} className={style.center}>
 						<img src={alarm} alt="" />
 					</li>
-					<li>
-						<img className={style.userImage} src={userImage} alt="image" />
+					<li onClick={()=>setOptions(!options)} className={style.userImg}>
+						{ isAuth && <img className={style.userImage} src={userImage} alt="ima" />} 
+						{ 	options &&
+							<div className={style.logout}>
+								<p onClick={()=>logUserOut()} >Logout</p>
+								<p  onClick = { ()=> navigate('/dashboard/profile-setup')} >Profile</p>
+							</div>
+						}
 					</li>
 				</ul>
 			</div>
-			<div onClick={()=>dispatch( toggleSideNav(true) )} className={style.menu}>
-				<img src={more} alt="" />
+			<div  className={style.menu}>
+				<img onClick={()=>dispatch( toggleSearchNav(true) )} className={style.searchImg} src={search} alt="" />
+				<img onClick={()=>dispatch( toggleSideNav(true) )}src={more} alt="" />
 			</div>
 		</nav>
     </div>

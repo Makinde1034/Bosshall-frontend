@@ -19,8 +19,8 @@ function SideNav() {
 
 
     const changeRoute = ( route : string ) =>{
-         navigate(route);
-         dispatch ( toggleSideNav(false) )
+        navigate(route);
+        dispatch ( toggleSideNav(false) )
     }
 
 
@@ -35,7 +35,7 @@ function SideNav() {
                     <img src={home} alt="" />
                     <p>Home</p>
                 </li>
-                <li  className = {isSideNavActive ? `${style.list2} ${style.list2__active}` : `${style.list2}` } >
+                <li  onClick = { ()=> changeRoute('/dashboard/notifications')} className = {isSideNavActive ? `${style.list2} ${style.list2__active}` : `${style.list2}` } >
                     <img src={notification} alt="" />
                     <p>Notifications</p>
                 </li>
@@ -45,7 +45,7 @@ function SideNav() {
                 </li>
                 <li className = {isSideNavActive ? `${style.list4} ${style.list4__active}` : `${style.list4}` } >
                     <img src={profile} alt="" />
-                    <p>Profile</p>
+                    <p onClick={()=>changeRoute(`/dashboard/profile-setup`)} >Profile</p>
                 </li>
                 {/* logout */}
                 <li className={style.logout}>

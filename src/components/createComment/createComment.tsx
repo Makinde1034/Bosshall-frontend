@@ -65,7 +65,7 @@ function CreateComment({ id }:createCommentProps) {
     <div className={style.comment}>
       <img src={userImg} alt="" />
       <form onSubmit={(e)=>createComment(e)} action="">
-        <textarea required onChange={(e)=>setComment(e.target.value)} name="" id="" ></textarea>
+        <textarea value = {comment} required onChange={(e)=>setComment(e.target.value)} name="" id="" ></textarea>
         <button disabled={disabled} >Add comment</button>
       </form>
       

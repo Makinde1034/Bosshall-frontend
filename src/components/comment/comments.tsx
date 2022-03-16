@@ -9,6 +9,7 @@ import commentApi from '../../api/coments'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { setCommentReplies, setCommentRepliesLoading  } from '../../store/replies'
 import Reply from '../reply/reply'
+import { Link } from 'react-router-dom'
 // import { useSelector } from 'react-redux'
 
 
@@ -31,6 +32,10 @@ function Comments({comment, commentorImage, time, commentorName, activeComment, 
   const replies = useAppSelector((state)=>state.replyReducer.replies);
   const isReplying = activeComment && activeComment === commentId
   const repliesLoading = useAppSelector((state)=>state.replyReducer.loading)
+
+  const token = useAppSelector((state)=>state.userSlice.token);
+
+  const canReply = Boolean(token);
 
   
 
@@ -69,7 +74,9 @@ function Comments({comment, commentorImage, time, commentorName, activeComment, 
         </div>
         { 
           isReplying && (
-            <CreateReply />
+            <div>
+             { canReply ?  <CreateReply /> : <div className={style.cant__comment} > <Link to="/">Sign up</Link> or <Link to="/">sign in</Link> to leave a comment</div>  } 
+            </div> 
           )
           
          
@@ -77,7 +84,7 @@ function Comments({comment, commentorImage, time, commentorName, activeComment, 
         { 
           isReplying && repliesLoading ? (<p>loading reply...</p>) : 
           replies.map((item,index)=>(
-            isReplying && replies.length > 0 &&
+            // isReplying && replies.length > 0 &&
             <Reply 
               key = {item._id} 
               time ={item.time} 

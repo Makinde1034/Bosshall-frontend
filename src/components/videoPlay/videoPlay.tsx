@@ -8,18 +8,20 @@ import feelingsApi from '../../api/feelings'
 import { useAppSelector } from '../../store/hooks'
 import { toast,ToastOptions } from 'react-toastify'
 import ToastMsg from '../../components/toastMsg/toastMsg'
+import { getDate } from '../../utils/date/getTimeAdded'
 
 
 interface videoPlayProps{
     videoId : any
     url : string,
     title : string,
-    likes : number
+    likes : number,
+    time : string
 }
 
 
 
-const VideoPlay = ({videoId, url, title, likes}:videoPlayProps) => {
+const VideoPlay = ({videoId, url, title, likes, time}:videoPlayProps) => {
 
     const [isLike, setIsLike] = useState(null);         
     const [dummyLikeCount, setDummyLikeCount] = useState(0)
@@ -100,6 +102,7 @@ const VideoPlay = ({videoId, url, title, likes}:videoPlayProps) => {
         <div className={style.videoplay__actions}>
             <div className={style.title} >
                 <p>{title}</p>
+                <p className={style.time}>{getDate(time)}</p>
             </div>
             <div className={style.actions} >
                 <span data-tooltip = "Hello" >

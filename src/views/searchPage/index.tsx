@@ -50,7 +50,7 @@ function SearchPage() {
                                 <video src={item.url}></video>
                             </div>
                             <div className={style.text}>
-                                <p className={style.title}>{item.title}</p>
+                                <p onClick={()=>openVideo(item._id)} className={style.title}>{item.title}</p>
                                 <p className={style.channel}>{item.channelName}</p>
                                 <p className={style.time}>{timeSince(new Date(item.time))}  ago</p>
                                 <p className={style.time}>{item.views} views</p>

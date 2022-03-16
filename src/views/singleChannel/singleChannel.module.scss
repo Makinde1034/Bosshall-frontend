@@ -4,11 +4,14 @@
 //     position: relative;
 // }
 .channel{
+
     min-height: 100vh;
     padding-left: 200px;
     padding-right: 200px;
+    padding-bottom: 50px;
 
     .channel__banner{
+
         height: 240px;
         width: 100%;
         background-image: url('../../assets/img/Rectangle.png');
@@ -20,6 +23,7 @@
         position: relative;
 
         .channel__nav{
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -28,25 +32,34 @@
             bottom: 30px;
             padding-left: 20px;
             padding-right: 20px;
+
             .owner{
+
                 display: flex;
                 align-items: center;
                
                 img{
+
                     margin-right: 20px;
-                     height: 50px;
-                     width: 50px;
-                     border-radius: 100%;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 100%;
+                    object-fit: cover;
                 }
+
                 h3{
                     font-size: 16px;
+                    color: white;
                 }
+
                 p{
                     font-size: 12px;
+                    color: white;
                 }
             }
+
             button{
-                 background: #EF5350;
+                background: #EF5350;
                 border: none;
                 color: white;
                 font-weight: 600;
@@ -73,5 +86,59 @@
 
            
         }
+    }
+}
+
+@media screen and (max-width:481px) {
+
+    .channel{
+
+        padding-left: 20px;
+        padding-right: 20px;
+
+        .channel__banner{
+
+            height: 200px;
+
+            .channel__nav{
+
+                .owner{
+                    img{
+
+                        margin-right: 10px;
+                    }
+                }
+
+                button{
+                    width: 80px;
+                    font-size: 10px;
+                    padding: 5px;
+                }
+            }
+        }
+
+        .videos{
+
+            display: grid;
+            grid-template-columns: 1fr;
+            margin-top: 20px;
+            row-gap: 50px;
+            column-gap: 20px;
+        }
+
+        .video{
+            // background:tan;
+            // height: 200px;
+            border-radius: 12px;
+            
+        }
+    }
+}
+
+@media screen and (min-width:481px) and (max-width:1024px) {
+    .channel{
+
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }

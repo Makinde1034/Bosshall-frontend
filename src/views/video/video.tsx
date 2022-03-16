@@ -34,7 +34,9 @@ function Video() {
         channelImage : "",
         channelId : "",
         id : "",
-        likes : 0
+        likes : 0,
+        time :"",
+        channelName : ""
         
     });
 
@@ -53,6 +55,7 @@ function Video() {
     const getVideo = async () =>{
 
         try{
+            // get video with id params
             const res = await videoApi.getVideo(id);
             console.log(res)
             setVideoData({ 
@@ -61,12 +64,16 @@ function Video() {
                 channelImage : res.data.vid.channelImage, 
                 channelId : res.data.vid.channelId,
                 id : res.data.vid._id, 
-                likes : res.data.vid.likes
+                likes : res.data.vid.likes,
+                time : res.data.vid.time,
+                channelName : res.data.vid.channelName
             });
             loadRelatedVideos( res.data.vid.channelId)
 
             // check if user is subscribed to channel
             isSubscibed(res.data.vid.channelId)
+
+            window.scrollTo(0, 0);
             
 
 
@@ -154,6 +161,10 @@ function Video() {
         }
        
     }
+
+    const goToChannel = (id:string) =>{
+        navigate(`/dashboard/single-channel/${id}`)
+    }
     
 
 
@@ -167,13 +178,14 @@ function Video() {
                         videoId = {id}
                         url = {videoData.url}
                         title = {videoData.title} 
-                        likes = {videoData.likes}  
+                        likes = {videoData.likes} 
+                        time = {videoData.time} 
                     />  
                 </div>
                 <div className={style.video__channel}>
-                    <div className={style.channel__image}>
+                    <div onClick={()=>goToChannel(videoData.channelId)} className={style.channel__image}>
                         <img src={videoData.channelImage} alt="" />
-                        <p>Channel Name</p>
+                        <p>{videoData.channelName}</p>
                     </div>
                     <button onClick={()=>subscribe()} > { isUserSubscribed ? "Unsubscribe" : "Subscribe" }</button>
                 </div>
@@ -206,7 +218,7 @@ function Video() {
                 <h2 style={{fontSize:"18px",marginBottom:"30px"}}>Related videos</h2>
                 {
                     relatedVids.map((item,index)=>(
-                        <RelatedVideos date = {item.time} title={item.title} id = {item._id} url={item.url} />
+                        <RelatedVideos date = {item.time} channelName = {item.channelName} title={item.title} id = {item._id} url={item.url} />
                     ))
                 }
             </div>
@@ -214,4 +226,4 @@ function Video() {
     )
 }
 
-export default Video
+export default Video 
