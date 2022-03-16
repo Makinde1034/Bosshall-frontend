@@ -3,7 +3,7 @@ import axios  from "axios";
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export default {
-    createChannel(data : any){
+    createChannel(data){
         return axios({
             url : `${BASE_URL}/api/create-channel`,
             method : "POST",
@@ -13,14 +13,14 @@ export default {
             data : data
         })
     },
-    getChannel(id : any){
+    getChannel(id ){
         return axios({
             url : `${BASE_URL}/api/get-channel-videos/${id}`,
             method : "GET",
 
         })
     },
-    getUserChannels(id : any){
+    getUserChannels(id ){
         return axios({
             url : `${BASE_URL}/api/get-user-channels/${id}`,
             method : "GET"
@@ -33,7 +33,7 @@ export default {
             method : "GET"
         })
     },
-    createSubscription(data : any){
+    createSubscription(data){
         return axios({
             url : `${BASE_URL}/api/subscribe`,
             method : "POST",
@@ -44,7 +44,7 @@ export default {
 
         })
     },
-    checkSubscription(data : any ){
+    checkSubscription(data ){
         return axios({
             url : `${BASE_URL}/api/check-subscription`,
             method : "POST",

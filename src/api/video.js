@@ -2,12 +2,10 @@ import axios  from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
-interface tt  {
-    text : string
-}
 
 export default {
-    uploadVideo(data : any){
+    
+    uploadVideo(data){
         return axios({
             url : `${BASE_URL}/api/upload-video`,
             method : 'POST',
@@ -25,14 +23,14 @@ export default {
         })
     },
 
-    getVideo(id : any){
+    getVideo(id){
         return axios({
             url : `${BASE_URL}/api/get-video/${id}`,
             method : "GET"
         })
     },
 
-    getRelatedVideos(id:string){
+    getRelatedVideos(id){
         return axios({
             url : `${BASE_URL}/api/get-related-videos/${id}`,
             method : "GET",
@@ -40,7 +38,7 @@ export default {
         })
     },
 
-    searchVideo(data : any){
+    searchVideo(data){
         return axios({
             url : `${BASE_URL}/api/search-video?text=${data.text}`,
             method : "GET",

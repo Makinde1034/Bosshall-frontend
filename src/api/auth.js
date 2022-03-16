@@ -1,10 +1,9 @@
-import axios  from "axios";
-import { url } from "inspector";
-import type  { userDetails } from "../types";
+import axios,{AxiosRequestConfig}  from "axios";
+// import type  { userDetails } from "../types";
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export default {
-    register(data : userDetails){
+    register(data){
         return axios({
             url : `${BASE_URL}/api/register`,
             method : "POST",
@@ -12,7 +11,7 @@ export default {
         })
     },
 
-    login(data : userDetails){
+    login(data){
         return axios({
             url: `${BASE_URL}/api/login`,
             method : "POST",
@@ -20,7 +19,7 @@ export default {
         })
     },
 
-    updateProfile(data : any){
+    updateProfile(data){
         return axios({
             url : `${BASE_URL}/api/update-profile`,
             method : "POST",
@@ -52,3 +51,4 @@ export default {
         })
     }
 }
+

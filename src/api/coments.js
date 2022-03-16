@@ -3,7 +3,7 @@ import axios  from "axios";
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export default {
-    createComment(data : any){
+    createComment(data){
 
         return axios({
             url : `${BASE_URL}/api/create-comment`,
@@ -15,7 +15,7 @@ export default {
         })
     },
 
-    getComments(id:any){
+    getComments(id){
         return axios({
             url : `${BASE_URL}/api/get-video-comments/${id}`,
             method : "GET",
@@ -27,7 +27,7 @@ export default {
     },
 
     // get comment replies
-    getCommentReplies(id : any){
+    getCommentReplies(id){
         return axios({
             url : `${BASE_URL}/api/get-comment-replies/${id}`,
             method : "GET",

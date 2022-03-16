@@ -1,13 +1,11 @@
 import axios from 'axios'
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
-interface likeVideoData {
-    reciever : string
-}
+
 
 export default {
 
-    likeUnlikVideo(data : likeVideoData ){
+    likeUnlikVideo(data){
        return axios({
             url : `${BASE_URL}/api/like-unlike`,
             method : "POST",
@@ -18,7 +16,7 @@ export default {
         })
     },
 
-    checkVideoLike(data : likeVideoData){
+    checkVideoLike(data){
         return axios({
             url : `${BASE_URL}/api/check-video-like`,
             method : "POST",
