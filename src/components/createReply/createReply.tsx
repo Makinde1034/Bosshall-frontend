@@ -2,7 +2,7 @@ import React from 'react'
 import style from './createReply.module.scss'
 import user from '../../assets/img/Avatar.png'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import Form from 'antd/lib/form/Form'
+
 
 interface replyProps {
     isReplyActive : boolean
