@@ -32,7 +32,7 @@ function SearchPage() {
     }
 
     const openVideo = (id:string) => {
-        navigate(`/dashboard/video/${id}`);
+        navigate(`/video/${id}`);
     }
 
 
