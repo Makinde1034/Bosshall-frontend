@@ -31,12 +31,16 @@ function App() {
 
   const routes = (isAuth:boolean) => [  
     {
+      path : "/register",
+      element : <Register />
+    },
+    {
       path : "*",
       element : <Register />
     },
-
+    
     {
-      path : "dashboard",
+      path : "",
       element : <Dashboard />  ,
       children: [
         {
@@ -87,6 +91,7 @@ function App() {
   ]
 
   function Route(){
+
     const routing = useRoutes(routes(isAuth))
 
     return routing

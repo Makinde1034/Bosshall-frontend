@@ -5,7 +5,7 @@ import Ripples from 'react-ripples'
 import api from '../../api/auth'
 import { useAppDispatch,useAppSelector } from '../../store/hooks'
 import { setUser,setError,authRequest,authFailure, } from '../../store/user';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Preloader from '../../components/prealoder/preloader';
 import { saveToken,saveUserImage } from '../../helpers/storage';
 
@@ -65,8 +65,9 @@ function SignUp() {
 				<button disabled={loading}>
 					{ loading ? <Preloader /> : <p>Sign up</p> }
 				</button>
+				<Link className={style.acc} to={"/signi"} >Already have an account ?</Link>
 			</form>
-			<p className={style.errMsg}>{errMsg}</p>
+			
 		</div>
 	)
 }

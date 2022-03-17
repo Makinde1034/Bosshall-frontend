@@ -194,7 +194,7 @@ function Video() {
                     ? 
                     <CreateComment id = {id} />
                     : 
-                    <div className={style.cant__comment} > <Link to="/">Sign up</Link> or <Link to="/">sign in</Link> to leave a comment</div>
+                    <div className={style.cant__comment} > <Link to="/register">Sign up</Link> or <Link to="/register">sign in</Link> to leave a comment</div>
                     }
                 </div>
                 <div className={style.comment}>

@@ -23,6 +23,7 @@ function ProfileSetup() {
   const dispatch = useAppDispatch()
   // const userDetails = useAppSelector((state)=>state.userSlice.userDetails)
 	const loading = useAppSelector((state)=>state.userSlice.updateProfileLoading);
+  const userImg = useAppSelector((state)=>state.userSlice.userImg)
  
 
 

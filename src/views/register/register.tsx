@@ -15,7 +15,7 @@ function Register() {
         </div>
         <div className={style.register__right}>
           <nav className={style.register__right__nav}>
-            <Link to={"/"}>
+            <Link to={"/register"}>
               <button className={style.button1}>Sign up</button>
             </Link>
             <Link to={"/signin"}>

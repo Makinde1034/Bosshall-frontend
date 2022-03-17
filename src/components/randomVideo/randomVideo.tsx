@@ -18,7 +18,7 @@ function RandonVideos({url,title, channelImage, id, views} : randomVid) {
   const navigate = useNavigate();
 
   const openVideo = (id:string) => {
-    navigate(`/dashboard/video/${id}`);
+    navigate(`/video/${id}`);
   }
 
   return (

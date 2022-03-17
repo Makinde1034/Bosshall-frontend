@@ -75,7 +75,7 @@ function Comments({comment, commentorImage, time, commentorName, activeComment, 
         { 
           isReplying && (
             <div>
-             { canReply ?  <CreateReply /> : <div className={style.cant__comment} > <Link to="/">Sign up</Link> or <Link to="/">sign in</Link> to leave a comment</div>  } 
+             { canReply ?  <CreateReply /> : <div className={style.cant__comment} > <Link to="/register">Sign up</Link> or <Link to="/register">sign in</Link> to leave a comment</div>  } 
             </div> 
           )
           

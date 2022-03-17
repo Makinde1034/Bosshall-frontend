@@ -4,12 +4,13 @@ import style from './home.module.scss'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import videoApi from '../../api/video'
 import channelApi from '../../api/channel'
-import { setRandomVideos } from '../../store/randomVideos'
+import { setRandomVideos, randomVideosRequest } from '../../store/randomVideos'
 import { setRandomChannels } from '../../store/randomChannels';
 import RandonVideo from '../../components/randomVideo/randomVideo';
 import RandomChannel from '../../components/randomChannel/randomChannel';
 import { isAuthenticated } from '../../helpers/authentication'
 import { setAuth } from '../../store/auth';
+import RandomVideosSkeleton from '../../components/skeletons/randomVideosSkeleton/randomVideosSkeleton'
 
 
 
@@ -25,6 +26,7 @@ function Home() {
     // select random channels and videos
     const videos = useAppSelector((state)=>state.randomVideos.randomVideos);
     const randomChannels = useAppSelector((state)=>state.randomChannels.randomChannels);
+    const randomVideosLoading = useAppSelector((state)=>state.randomVideos.loading)
     
 
 
@@ -32,7 +34,7 @@ function Home() {
     const getRandomVideos = async () => {
 
         try{
-
+            dispatch( randomVideosRequest(true) )
             const randomVideos = await videoApi.getRandomVideos();
             console.log(randomVideos)
             dispatch(setRandomVideos( randomVideos.data.videos) )
@@ -76,15 +78,19 @@ function Home() {
         <div>
             <div className={style.home}>
                 <p className={style.rand}  >Random videos</p>
-                <div className={style.random__videos}>
-                    {
-                        videos.map((item,index) =>(
-                            <div>
-                                <RandonVideo views = {item.views} url={item.url} title={item.title} channelImage={item.channelImage} id = {item._id}  />
-                            </div>
-                        ))
-                    }
-                </div>
+                {   randomVideosLoading ? 
+                    <RandomVideosSkeleton />
+                    :
+                    <div className={style.random__videos}>
+                        {
+                            videos.map((item,index) =>(
+                                <div>
+                                    <RandonVideo views = {item.views} url={item.url} title={item.title} channelImage={item.channelImage} id = {item._id}  />
+                                </div>
+                            ))
+                        }
+                    </div>
+                }
                 {/* <p className={style.rand}  >Random Channels</p> */}
                 <div className={style.random__channels}>
                     {

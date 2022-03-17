@@ -8,6 +8,8 @@ import { setAuth } from '../../store/auth';
 import { saveToken,saveUserImage,saveUserId } from '../../helpers/storage';
 import Preloader from '../../components/prealoder/preloader';
 import { useNavigate } from 'react-router-dom'
+import eye from '../../assets/img/eyes.png'
+import closedEye from '../../assets/img/visibility.png'
 // import Preloader from '../../components/prealoder/preloader';
 
 
@@ -17,7 +19,11 @@ function SignIn() {
 	const [ email, setEmail ] = useState("")
 	const [ password, setPassword ] = useState("");
 	const [disabled, setDisabled]  = useState(false)
+	const [isVisible, setIsVisible] = useState(false)
+
+
 	const dispatch = useAppDispatch()
+
 	const errorMsg = useAppSelector((state)=>state.userSlice.errMsg);
 	const loading = useAppSelector((state)=>state.userSlice.loading);
 
@@ -66,7 +72,8 @@ function SignIn() {
 				<img src={message} alt="" />
 			</div>
 			<div className={style.inputWrap}>
-				<input onChange={(e)=>setPassword(e.target.value)} placeholder='*******' required  type="password" />
+				<input onChange={(e)=>setPassword(e.target.value)} placeholder='*******' required  type={ isVisible ? "text" : "password" } />
+				<img onClick={()=>setIsVisible(!isVisible)} src={ isVisible ? eye : closedEye } alt="" />
 			</div>
 			<button disabled={ disabled }>
 				{ 
