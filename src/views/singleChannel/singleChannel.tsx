@@ -68,7 +68,7 @@ function SignChannel() {
 	const subscribe = async ( ) => {
 
         if(!canSubscribe){
-            return navigate("")
+            return navigate("/register")
         }
 
         try{

@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAppSelector, useAppDispatch } from './store/hooks';
+import Fallback from './components/fallback/fallback'
 
 
 
@@ -70,7 +71,7 @@ function App() {
         },
         {
           path : "single-channel/:id",
-          element : isAuth ? <SingleChannel /> : <Navigate to="/" />
+          element : <SingleChannel />
         },
         {
           path : "my-channel/:id",
@@ -101,7 +102,7 @@ function App() {
 
   return (
     <div className="App">
-      <Suspense fallback={<p>Loading</p>}>
+      <Suspense fallback={<Fallback />}>
         <Route />
       </Suspense>
       <ToastContainer />

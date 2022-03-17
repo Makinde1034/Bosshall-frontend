@@ -14,7 +14,7 @@ function RandomChannel({id, image, name}:randomChannelProps) {
   const navigate = useNavigate()
 
   const goToChannel = (id:string) =>{
-    navigate(`/dashboard/single-channel/${id}`)
+    navigate(`/single-channel/${id}`)
   }
 
   return (

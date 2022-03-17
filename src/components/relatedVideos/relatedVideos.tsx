@@ -18,7 +18,7 @@ function RelatedVideos({title, url, date, id, channelName}:realatedVideoProps) {
     const navigate = useNavigate()
 
     const openVideo = (id:string) => {
-        navigate(`/dashboard/video/${id}`);
+        navigate(`/video/${id}`);
     }
     
   return (

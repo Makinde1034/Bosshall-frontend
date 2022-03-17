@@ -68,7 +68,7 @@ function Navigation() {
 			<div className={style.logo__routename}>  
 				<img onClick={()=>navigate("")}  src={logo} alt="logo" />
 				<span>|</span>
-				<p>{location.pathname.split("/").splice(2,1)}</p>
+				{/* <p>{location.pathname.split("/").splice(2,1)}</p> */}
 			</div>
 			<div className={style.search}>
 				<form onSubmit={(e)=>goToSearchPage(e)} action="">
