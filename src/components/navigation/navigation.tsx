@@ -38,7 +38,7 @@ function Navigation() {
 	const isDisabled = searchParam.search_query.length === 0
 
 	const goToChannels = () =>{
-		navigate(`/dashboard/my-channel/${id}`)
+		navigate(`/my-channel/${id}`)
 	}
 
     const goToSearchPage = (e:any) => {
@@ -79,11 +79,11 @@ function Navigation() {
 			<div className={style.ul__wrap}>
 				<ul className={style.ul1}>
 					<Link to={""} >Home</Link>
-					{ !isAuth && <li> Sign up</li>}
+					{ !isAuth && <li onClick={()=>navigate("/register")}  > Sign up</li>}
 					{ isAuth && <li onClick={goToChannels} >My channels</li>}
 				</ul>	
 				<ul className={style.ul2}>
-					<li onClick = { ()=> navigate('/dashboard/notifications')} className={style.center}>
+					<li onClick = { ()=> navigate('/notifications')} className={style.center}>
 						<img src={alarm} alt="" />
 					</li>
 					<li onClick={()=>setOptions(!options)} className={style.userImg}>
@@ -91,7 +91,7 @@ function Navigation() {
 						{ 	options &&
 							<div className={style.logout}>
 								<p onClick={()=>logUserOut()} >Logout</p>
-								<p  onClick = { ()=> navigate('/dashboard/profile-setup')} >Profile</p>
+								<p  onClick = { ()=> navigate('/profile-setup')} >Profile</p>
 							</div>
 						}
 					</li>

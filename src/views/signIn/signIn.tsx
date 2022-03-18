@@ -51,7 +51,7 @@ function SignIn() {
 			saveToken(response.data.token);
 			saveUserId(response.data.User._id);
 			dispatch(setAuth(true))
-			navigate("/dashboard")
+			navigate("")
 
 		}catch(err:any){
 			console.log(err.response.data.message);
