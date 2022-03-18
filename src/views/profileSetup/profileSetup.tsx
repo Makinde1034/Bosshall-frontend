@@ -87,7 +87,7 @@ function ProfileSetup() {
   }
 
   return (
-    <div style={{paddingBottom:"100px"}}>
+    <div style={{paddingBottom:"100px",maxWidth:"1300px"}}>
       <form onSubmit={(e)=>{updateProfile(e)}} action="">
         <nav className={style.nav}>
           <button>

@@ -34,7 +34,7 @@ function UserChannel() {
 
 
     const goToChannel = (id:string) =>{
-        navigate(`/dashboard/single-channel/${id}`)
+        navigate(`/single-channel/${id}`)
     }
 
 

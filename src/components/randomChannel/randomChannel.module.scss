@@ -10,11 +10,14 @@
     padding: 20px 20px 30px 20px;
     width: 100%;
     background-color: white;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;     
     @include center(center,flex-start, column );
     transition: 0.3s ease;
+    cursor: pointer;
+
 
     img{
+
         height: 150px;
         width: 100%;
         // border-radius: 3px;

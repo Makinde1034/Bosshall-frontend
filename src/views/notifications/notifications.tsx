@@ -29,26 +29,26 @@ function Notifications() {
 
     return (
 
-    <div className={style.notifications} >
-        <div className={style.nots} >
-            {
-                notificationsData.map((item,index)=>(
-                    <div className={style.nots__row}>
-                        <div className={style.nots__msg}>
-                            <img src={item.subscriberImage} alt="" />
-                            <div>
-                                <p> <span>{item.subscriberName}</span> subscribed to your channel <span>({item.channelName})</span> </p>
-                                <p className={style.time}>{timeSince(new Date(item.time))} ago</p>
+        <div className={style.notifications} >
+            <div className={style.nots} >
+                {
+                    notificationsData.map((item,index)=>(
+                        <div className={style.nots__row}>
+                            <div className={style.nots__msg}>
+                                <img src={item.subscriberImage} alt="" />
+                                <div>
+                                    <p> <span>{item.subscriberName}</span> subscribed to your channel <span>({item.channelName})</span> </p>
+                                    <p className={style.time}>{timeSince(new Date(item.time))} ago</p>
+                                </div>
                             </div>
+                            {/* <div></div> */}
                         </div>
-                        {/* <div></div> */}
-                    </div>
-                ))
-            }
+                    ))
+                }
+            </div>
         </div>
-    </div>
 
-  )
+    )
 }
 
 export default Notifications
