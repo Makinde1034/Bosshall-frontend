@@ -2,12 +2,19 @@ import React,{ useState,useEffect } from 'react'
 import style from './notifications.module.scss'
 import notificationsApi from '../../api/notifications'
 import { timeSince } from '../../utils/date/getTimeAdded'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { setAuth } from '../../store/auth'
+import { isAuthenticated } from '../../helpers/authentication'
 
 function Notifications() {
 
     useEffect(()=>{
-        getNotifications()
+        // getNotifications()
+        Promise.all([checkAuth(),getNotifications()])
     },[])
+
+
+    const dispatch = useAppDispatch()
 
     const [ notificationsData, setNotificationsData ] = useState([
         {
@@ -25,6 +32,17 @@ function Notifications() {
         const res = await notificationsApi.getNotifications()
         console.log(res)
         setNotificationsData( res.data.notifications )
+    }
+
+    const checkAuth = async () => {
+
+        try{
+            const res = await isAuthenticated()
+            console.log(res, "checkauthhh")
+            dispatch( setAuth(res.data.auth) )
+        }catch(err){
+            console.log(err)
+        }
     }
 
     return (

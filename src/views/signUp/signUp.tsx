@@ -37,7 +37,7 @@ function SignUp() {
 					userDetails : res.data.newUser
 				}
 				dispatch(setUser(details) )
-				navigate("");
+				navigate("/");
 			}).catch((err)=>{
 				dispatch(setError(err.response.data.message));
 				dispatch(authFailure(false))

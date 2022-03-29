@@ -44,6 +44,16 @@ export default {
             method : "GET",
             
         })
+    },
+    deleteVideo(id){
+        return axios({
+            url : `${BASE_URL}/api/delete-video/${id}`,
+            method : "DELETE",
+            headers : {
+                "x-access-token" : localStorage.getItem("token")
+            },
+            
+        })
     }
 
 }

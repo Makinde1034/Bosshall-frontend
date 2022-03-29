@@ -32,7 +32,7 @@ function App() {
 
   const routes = (isAuth:boolean) => [  
     {
-      path : "/register",
+      path : "/register/*",
       element : <Register />
     },
     {

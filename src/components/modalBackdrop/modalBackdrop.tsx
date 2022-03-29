@@ -4,7 +4,7 @@ import { useAppSelector } from '../../store/hooks'
 
 function ModalBackdrop() {
 
-    const isModalOpen = useAppSelector((state)=>state.toggleSlice.uploadModal)
+  const isModalOpen = useAppSelector((state)=>state.toggleSlice.modalBackdrop)
  
 
   return  (
