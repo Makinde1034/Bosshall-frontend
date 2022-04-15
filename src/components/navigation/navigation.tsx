@@ -84,7 +84,7 @@ function Navigation() {
 				</ul>	
 				<ul className={style.ul2}>
 					<li onClick = { ()=> navigate('/notifications')} className={style.center}>
-						<img src={alarm} alt="" />
+						{ isAuth && <img src={alarm} alt="" />}
 					</li>
 					<li onClick={()=>setOptions(!options)} className={style.userImg}>
 						{ isAuth && <img className={style.userImage} src={userImage} alt="ima" />} 
