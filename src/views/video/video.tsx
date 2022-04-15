@@ -170,57 +170,60 @@ function Video() {
 
 
     return (
+        <div className={style.vid__wrap}>
 
-        <div className={style.video} >
-            <div className={style.video__left}>
-                <div className={style.video__play}>
-                    <VideoPlay 
-                        videoId = {id}
-                        url = {videoData.url}
-                        title = {videoData.title} 
-                        likes = {videoData.likes} 
-                        time = {videoData.time} 
-                    />  
-                </div>
-                <div className={style.video__channel}>
-                    <div onClick={()=>goToChannel(videoData.channelId)} className={style.channel__image}>
-                        <img src={videoData.channelImage} alt="" />
-                        <p>{videoData.channelName}</p>
+            
+            <div className={style.video} >
+                <div className={style.video__left}>
+                    <div className={style.video__play}>
+                        <VideoPlay 
+                            videoId = {id}
+                            url = {videoData.url}
+                            title = {videoData.title} 
+                            likes = {videoData.likes} 
+                            time = {videoData.time} 
+                        />  
                     </div>
-                    <button onClick={()=>subscribe()} > { isUserSubscribed ? "Unsubscribe" : "Subscribe" }</button>
+                    <div className={style.video__channel}>
+                        <div onClick={()=>goToChannel(videoData.channelId)} className={style.channel__image}>
+                            <img src={videoData.channelImage} alt="" />
+                            <p>{videoData.channelName}</p>
+                        </div>
+                        <button onClick={()=>subscribe()} > { isUserSubscribed ? "Unsubscribe" : "Subscribe" }</button>
+                    </div>
+                    <div className={style.create__comment}>
+                    { canReply 
+                        ? 
+                        <CreateComment id = {id} />
+                        : 
+                        <div className={style.cant__comment} > <Link to="/register">Sign up</Link> or <Link to="/register">sign in</Link> to leave a comment</div>
+                        }
+                    </div>
+                    <div className={style.comment}>
+                        {
+                            comments.map((item,index)=>(
+                                <Comment 
+                                    key = {item._id}
+                                    activeComment={activeComment} 
+                                    setActiveComment = {setActiveComment}
+                                    comment = {item.comment} 
+                                    commentorImage = {item.users.userImage} 
+                                    time = {item.time} 
+                                    commentorName = {item.users.fullname} 
+                                    commentId = {item._id}
+                                />
+                            ))
+                        }
+                    </div>
                 </div>
-                <div className={style.create__comment}>
-                   { canReply 
-                    ? 
-                    <CreateComment id = {id} />
-                    : 
-                    <div className={style.cant__comment} > <Link to="/register">Sign up</Link> or <Link to="/register">sign in</Link> to leave a comment</div>
-                    }
-                </div>
-                <div className={style.comment}>
+                <div className={style.video__right}>
+                    <h2 style={{fontSize:"18px",marginBottom:"30px"}}>Related videos</h2>
                     {
-                        comments.map((item,index)=>(
-                            <Comment 
-                                key = {item._id}
-                                activeComment={activeComment} 
-                                setActiveComment = {setActiveComment}
-                                comment = {item.comment} 
-                                commentorImage = {item.users.userImage} 
-                                time = {item.time} 
-                                commentorName = {item.users.fullname} 
-                                commentId = {item._id}
-                            />
+                        relatedVids.map((item,index)=>(
+                            <RelatedVideos date = {item.time} channelName = {item.channelName} title={item.title} id = {item._id} url={item.url} />
                         ))
                     }
                 </div>
-            </div>
-            <div className={style.video__right}>
-                <h2 style={{fontSize:"18px",marginBottom:"30px"}}>Related videos</h2>
-                {
-                    relatedVids.map((item,index)=>(
-                        <RelatedVideos date = {item.time} channelName = {item.channelName} title={item.title} id = {item._id} url={item.url} />
-                    ))
-                }
             </div>
         </div>
     )

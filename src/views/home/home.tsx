@@ -15,11 +15,12 @@ import RandomVideosSkeleton from '../../components/skeletons/randomVideosSkeleto
 
 
 
+
 function Home() {
 
     useEffect(()=>{
-        
         Promise.all([getRandomVideos(), getRanadomChannels(), checkAuth()])
+        
     },[])
 
     const dispatch = useAppDispatch();
@@ -27,8 +28,9 @@ function Home() {
     const videos = useAppSelector((state)=>state.randomVideos.randomVideos);
     const randomChannels = useAppSelector((state)=>state.randomChannels.randomChannels);
     const randomVideosLoading = useAppSelector((state)=>state.randomVideos.loading)
+    const isDarkMode = useAppSelector((state)=>state.toggleSlice.darkMode)
     
-
+    //  const [ref, inView] = useInView();
 
     // get random videos
     const getRandomVideos = async () => {

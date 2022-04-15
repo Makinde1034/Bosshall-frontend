@@ -16,24 +16,23 @@ function SearchPage() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
 
-    useEffect(()=>{
-        search()
-
-    },[text])
+    useEffect(() => {
+      search();
+    }, [text]);
 
     const search = async () => {
-        const data = { 
-           text : text
-        }
-   
-       const res = await videoApi.searchVideo(data)   
-       dispatch( setSearchResults(res.data) ) 
-       console.log(res)
-    }
+      const data = {
+        text: text,
+      };
 
-    const openVideo = (id:string) => {
-        navigate(`/video/${id}`);
-    }
+      const res = await videoApi.searchVideo(data);
+      dispatch(setSearchResults(res.data));
+      console.log(res);
+    };
+
+    const openVideo = (id: string) => {
+      navigate(`/video/${id}`);
+    };
 
 
     return (

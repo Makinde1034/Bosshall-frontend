@@ -1,18 +1,22 @@
 .userchannel__wrap{
     min-height: 100vh;
-    max-width: 1500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
     .userchannel{
     
         display: grid;
         padding: 20px 100px 0px 100px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 40px;
+        gap: 40px; 
+        max-width: 1500px;
 
         .box{
             background: white;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             padding: 20px;
+            height: auto;
             // border-radius: 15px;
             cursor: pointer;
 

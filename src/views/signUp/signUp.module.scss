@@ -1,6 +1,25 @@
 $primary : #EF5350;
 ;
 
+html[data-theme="light"] {
+    --background__color: white;
+    --color :#181819B2;
+}
+
+html[data-theme="dark"] {
+    --background__color: #202020;
+    --color: white;
+}
+
+// *{
+//     background-color: var(--background__color);
+//     color: var(--color);
+// }
+
+body {
+    background-color: var(--background__color);
+}
+
 .signup{
     width: 100%;
     display: flex;
@@ -16,7 +35,8 @@ $primary : #EF5350;
     p{
         width: 50%;
         text-align: center;
-        color:#181819B2;
+        // color:#181819B2;
+        color: var(--color);
 
     }
 
@@ -62,6 +82,7 @@ $primary : #EF5350;
             align-items: center;
             p{
                 color: white;
+                background: $primary;
                 font-weight: 600;
             }
             

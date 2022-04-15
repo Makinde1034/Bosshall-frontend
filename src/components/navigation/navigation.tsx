@@ -92,6 +92,7 @@ function Navigation() {
 							<div className={style.logout}>
 								<p onClick={()=>logUserOut()} >Logout</p>
 								<p  onClick = { ()=> navigate('/profile-setup')} >Profile</p>
+								<p onClick={()=>navigate('/library')}>Libraries</p>
 							</div>
 						}
 					</li>

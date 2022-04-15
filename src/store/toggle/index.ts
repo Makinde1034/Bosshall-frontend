@@ -7,7 +7,8 @@ const initialState = {
     searchNav : false,
     deleteModal : false,
     modalBackdrop : false,
-    videoDeleteId : ""
+    videoDeleteId : "",
+    darkMode : false
 }
 
 

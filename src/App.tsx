@@ -1,4 +1,4 @@
-import React,{useState,Suspense} from 'react';
+import React,{useState,Suspense,useEffect} from 'react';
 import {useRoutes, Navigate} from 'react-router-dom'
 import Register from './views/register/register';
 import { isAuthenticated } from './helpers/authentication';
@@ -23,6 +23,7 @@ const Home = React.lazy(()=>import("./views/home/home"))
 const Video = React.lazy(()=>import("./views/video/video"))
 const SearchPage = React.lazy(()=>import("./views/searchPage"))
 const Notifications = React.lazy(()=>import("./views/notifications/notifications"))
+const Library = React.lazy(()=>import("./views/library/library"))
 
 function App() {
 
@@ -84,6 +85,10 @@ function App() {
         {
           path : "notifications",
           element : isAuth ?   <Notifications /> : <Navigate to="/" />
+        },
+        {
+          path : "library",
+          element : isAuth ? <Library /> : <Navigate to="/" />
         }
       ]
     },
@@ -97,6 +102,10 @@ function App() {
 
     return routing
   }
+
+  useEffect(()=>{
+    // document.documentElement.setAttribute('data-theme','dark');
+  })
 
  
 

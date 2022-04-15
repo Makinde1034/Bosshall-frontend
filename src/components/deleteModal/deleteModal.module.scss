@@ -43,3 +43,11 @@
 
     visibility: visible;
 }
+
+@media screen and (max-width:768px) {
+
+	.delete{
+        max-width: 400px;
+        width: 90%;
+    }
+}

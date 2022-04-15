@@ -5,7 +5,17 @@
 }
 
 $primary :  #EF5350;
-;
+
+html[data-theme="light"] {
+	--background__color: white;
+}
+
+html[data-theme="dark"] {
+	--background__color: #202020;
+	--color: white;
+}
+
+
 
 .register{
 	display: flex;
@@ -44,7 +54,7 @@ $primary :  #EF5350;
 			}
 			.button2{
 				border: 1px solid $primary;
-				background: white;
+				background: var(--background__color);
 				color: $primary;
 				padding: 5px 10px;
 
